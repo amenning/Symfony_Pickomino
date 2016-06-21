@@ -1,0 +1,12 @@
+{# app/Resources/views/hello/greetings/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	{% for flash_message in app.session.flashBag.get('notice') %}
+	<div class="flash-notice">
+		{{ flash_message }}
+	</div>
+	{% endfor %}
+	
+	<h1>Hello {{ firstname }} {{ lastname }}!</h1>
+{% endblock %}
