@@ -1,0 +1,26 @@
+<div ng-controller="PlayerWormsLayoutController as layoutCtrl" ng-class="{'row-fluid twoPlayerContainer' : layoutCtrl.gameStatus.numPlayers===2 }">
+	<div ng-controller="PlayerOneWormsController as playerOneWorms" ng-class="{ 'twoPlayerWidth' : layoutCtrl.gameStatus.numPlayers===2 }">
+		<div class = 'titles-box' ng-class="{ 'activePlayerHighlight' : layoutCtrl.gameStatus.numPlayers===2 && layoutCtrl.gameStatus.activePlayer===0 }">
+			<span class = 'titles' ng-hide="layoutCtrl.gameStatus.numPlayers===2">Player's Worms ( <ng-pluralize count=playerOneWorms.status.total when="{'1': '1 Worm', 'other': '{} Worms'}"></ng-pluralize> )</span>
+			<span class = 'titles' ng-hide="layoutCtrl.gameStatus.numPlayers===1">Player 1's Worms ( <ng-pluralize count=playerOneWorms.status.total when="{'1': '1 Worm', 'other': '{} Worms'}"></ng-pluralize> )</span>
+		</div>					
+		<div class = 'playerWorms inset'>
+			<div class = 'worm inset' ng-repeat="playerOneWorm in playerOneWorms.wormValues" ng-class="{ 'activeHighlight' : (notice.frozenStatus.sum===playerOneWorm.value && $index===0 && layoutCtrl.gameStatus.activePlayer!==0) }" ng-click="playerOneWorms.stealWorm(playerOneWorm.value,0,$index)">
+				<p>{{playerOneWorm.value}}</p>
+				<img ng-src="{{playerOneWorm.image}}" />
+			</div>
+		</div>
+	</div>
+	<br/>
+	<div ng-controller="PlayerTwoWormsController as playerTwoWorms" ng-hide="layoutCtrl.gameStatus.numPlayers===1" class="twoPlayerWidth">
+		<div class = 'titles-box' ng-class="{ 'activePlayerHighlight' : layoutCtrl.gameStatus.numPlayers===2 && layoutCtrl.gameStatus.activePlayer===1 }">
+			<span class = 'titles'>Player 2's Worms ( <ng-pluralize count=playerTwoWorms.status.total when="{'1': '1 Worm', 'other': '{} Worms'}"></ng-pluralize> )</span>
+		</div>					
+		<div class = 'playerWorms inset'>
+			<div class = 'worm inset' ng-repeat="playerTwoWorm in playerTwoWorms.wormValues" ng-class="{ 'activeHighlight' : notice.frozenStatus.sum===playerTwoWorm.value && $index===0 && layoutCtrl.gameStatus.activePlayer!==1 }" ng-click="playerTwoWorms.stealWorm(playerTwoWorm.value,1,$index)">
+				<p>{{playerTwoWorm.value}}</p>
+				<img ng-src="{{playerTwoWorm.image}}" />
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,26 @@
+<div ng-controller="PlayerOptionsController as optionsCtrl">
+	<div class = 'titles-box'>
+		<span class = 'titles' ng-class="{ 'redText' : optionsCtrl.gameStatus.bunk }">
+			<span ng-hide="optionsCtrl.gameStatus.numPlayers===1 || optionsCtrl.gameStatus.gameOver">
+				Player {{optionsCtrl.gameStatus.activePlayer+1}}: 
+			</span>{{optionsCtrl.messageText.info}}
+		</span>
+	</div>	
+	<div class = 'playeroptions outset'>
+		<button class = 'buttons inset activeButtonHighlight' ng-click="optionsCtrl.setPlayers(1)" ng-show="optionsCtrl.gameStatus.playerSetup">
+			Solo Play
+		</button>
+		<button class = 'buttons inset activeButtonHighlight' ng-click="optionsCtrl.setPlayers(2)" ng-show="optionsCtrl.gameStatus.playerSetup">
+			Two Players
+		</button>
+		<button class = 'buttons inset' ng-click="optionsCtrl.rollDice()" ng-class="{ 'activeButtonHighlight' : optionsCtrl.gameStatus.roll }" ng-hide="optionsCtrl.gameStatus.playerSetup || optionsCtrl.gameStatus.bunk || optionsCtrl.gameStatus.gameOver">
+			Roll
+		</button>
+		<button class = 'buttons inset bunkButtonHighlight' ng-show="optionsCtrl.gameStatus.bunk" ng-click="optionsCtrl.bunkPenalty()">
+			Clear Bunk
+		</button>
+		<a href="pickomino.php"><button class = 'buttons inset activeButtonHighlight' ng-show="optionsCtrl.gameStatus.gameOver">
+			Reset
+		</button></a>
+	</div>
+</div>

@@ -1,3 +1,15 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+homepage:
+    path: /
+    defaults:
+        _controller: AppBundle:Main:index
+
+angular_templates:
+    path: /angular_directives/{name}
+    defaults:
+        _controller: AppBundle:AngularDirectives:showDirective
+    methods: [GET]
+        

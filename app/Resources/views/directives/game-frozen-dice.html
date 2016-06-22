@@ -1,0 +1,10 @@
+<div ng-controller="FrozenDiceController as frozenDice">
+	<div class = 'titles-box'>
+		<span class = 'titles'>Frozen Dice (Sum: {{frozenDice.frozenStatus.sum}})</span>
+	</div>					
+	<div class = 'frozendice inset'>
+		<div class = 'dice inset frozenHighlight' ng-repeat="dice in frozenDice.diceValues | orderBy:'value' track by $index ">
+			<img ng-src="{{dice.image}}" />
+		</div>
+	</div>
+</div>

@@ -1,0 +1,17 @@
+<div class = "login" ng-controller="LoginController as loginCtrl">
+	<!-- SHOW ERROR/SUCCESS MESSAGES --> 
+	<div class="redText" ng-show='message'>{{ message }}</div>
+
+	<form ng-submit="loginCtrl.processForm()">
+		<h1>Welcome to Pickomino!</h1>
+		<br/>
+		Please log in below or <a ng-click="loginCtrl.register()" class = 'btn btn-primary inset'>Register</a><br/><br/>
+		Username: <input type="text" name="username" ng-model="loginCtrl.formData.username" required><br/><br/> 
+		Password: <input type="password" name="password" ng-model="loginCtrl.formData.password" required> <br/><br/>
+		<input type="submit" value="Log in" class ='btn btn-primary inset loginBtn' >
+		<br/>
+		<br/>
+		<a ng-click="loginCtrl.guestLogin()" class ='btn btn-primary inset loginBtn' >Guest Login</a>
+		<br/>
+	</form>
+</div>

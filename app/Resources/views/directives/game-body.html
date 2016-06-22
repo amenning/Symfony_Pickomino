@@ -1,0 +1,14 @@
+<div ng-controller="GameBodyController as bodyCtrl" class='container-body'>
+
+	<!-- If not logged in, show login area here -->
+	<game-login ng-show="bodyCtrl.gameStatus.gameLogin"></game-login>
+	<!-- If not logged in, show registration area here -->
+	<game-registration ng-show="bodyCtrl.gameStatus.gameRegistration"></game-registration>
+	<!-- If logged in, show game selection here -->
+	<game-setup ng-show="bodyCtrl.gameStatus.gameSetup"></game-setup>
+	<!-- If logged in and game selected, show game board here -->
+	<game-board ng-show="bodyCtrl.gameStatus.gameActive"></game-board>
+	<!-- If logged in and toturial selected, show tutorial board here -->
+	<tutorial-board ng-show="bodyCtrl.gameStatus.tutorial"></tutorial-board>
+
+</div>

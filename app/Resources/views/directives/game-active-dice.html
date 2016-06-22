@@ -1,0 +1,10 @@
+<div ng-controller="ActiveDiceController as activeDice">				
+	<div class = 'titles-box'>
+		<span class = 'titles'>Active Dice</span>
+	</div>
+	<div class = 'activedice inset'>
+		<div class = 'dice inset' ng-repeat="dice in activeDice.diceValues track by $index" ng-click="activeDice.freezeDice(dice.value)" ng-class="(dice.canFreeze) ? 'activeHighlight' : 'inactiveHighlight' ">
+			<img ng-src="{{dice.image}}" />
+		</div>
+	</div>
+</div>
