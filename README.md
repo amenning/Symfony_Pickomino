@@ -1,4 +1,6 @@
-create_your_first_page
+Pickomino 
 ======================
 
-A Symfony project created on June 19, 2016, 10:49 pm.
+A Symfony project created on June 21, 2016.
+
+This project is a implementation of Pickomino dice game using Symfony and Angular
