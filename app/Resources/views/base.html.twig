@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
+	<html lang="en" ng-app="pickominoGame" class='container-game'>
+	<head>
+		<meta charset="utf-8" />
+		<title>Symfony/Angular Pickomino</title>
+		{% block stylesheets %}
+		<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.css">
+		<link rel="stylesheet" href="{{ asset('bundles/pickomino/css/main.css') }}" type="text/css" />
+		<link rel="stylesheet" href="{{ asset('bundles/pickomino/css/board.css') }}" type="text/css" />
+		{% endblock %}
+	</head>
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
