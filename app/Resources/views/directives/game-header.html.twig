@@ -1,7 +1,7 @@
 <div class='navbar navbar-default navbar-static-top' ng-controller='GameHeaderController as gameHeaderCtrl'>
 	<div class='container'>
 		<div class='navbar-header'>
-			<a href='index.php' class='navbar-brand'>AngularJS Pickomino Game</a>
+			<a href='{{ url('homepage') }}' class='navbar-brand'>AngularJS Pickomino Game</a>
 			
 			<button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
 				<span class='sr-only'>Toggle navigation</span>
@@ -37,7 +37,7 @@
 					<li>4. Repeat</li>
 				</ul>
 			</li>
-			<li><a href='rules.html' target="_blank">Rules</a></li>
+			<li><a href='{{ url('rules') }}' target="_blank">Rules</a></li>
 			<li ng-show='gameHeaderCtrl.name.firstname'><a href="app/assets/php/logout.php">Welcome {% verbatim %}{{gameHeaderCtrl.name.firstname}}{% endverbatim %}, Log out</a></li>
 		</ul>
 	</div>

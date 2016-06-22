@@ -7,6 +7,12 @@ homepage:
     defaults:
         _controller: AppBundle:Main:index
 
+rules:
+    path: /rules
+    defaults:
+        _controller: AppBundle:Main:showRules
+    methods: [GET]
+
 angular_templates:
     path: /angular_directives/{name}
     defaults:

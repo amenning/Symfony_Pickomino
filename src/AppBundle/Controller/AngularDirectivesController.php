@@ -12,6 +12,6 @@ class AngularDirectivesController extends Controller
 {
 	public function showDirectiveAction($name)
 	{
-		return $this->render('directives/'.$name.'.html', array());
+		return $this->render('directives/'.$name.'.html.twig', array());
 	}
 }

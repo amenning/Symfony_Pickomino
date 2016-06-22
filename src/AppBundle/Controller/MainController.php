@@ -14,4 +14,9 @@ class MainController extends Controller
 	{				
 		return $this->render('main/pickomino.html.twig', array());
 	}
+	
+	public function showRulesAction()
+	{				
+		return $this->render('rules/rules.html.twig', array());
+	}	
 }
