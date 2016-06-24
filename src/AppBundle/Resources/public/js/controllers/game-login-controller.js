@@ -54,12 +54,13 @@ angular.module('pickominoGame')
 				'email': 'guest@guest.com'					
 			};
 							
-			$http.post("app/assets/php/guest_registration.php", newGuest)
+			$http.post("/guest_registration", newGuest)
 			.success(function(data){
 				GameAction.setStatus('gameLogin', false);
 				GameAction.setStatus('gameSetup', true);
 				GameAction.setStatus('firstname', data.firstname);
 				GameAction.setStatus('userID', data.user_id);
+				console.log(data);
 			});
 		};
 	}
