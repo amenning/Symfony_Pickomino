@@ -1,0 +1,29 @@
+# src/AppBundle/Resources/config/doctrine/Players.orm.yml
+AppBundle\Entity\Player:
+  type: entity
+  table: player
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    username:
+      type: string
+      length: 255
+      unique: true
+    password:
+      type: string
+      length: 255
+    firstname:
+      type: string
+      length: 255
+    lastname:
+      type: string
+      length: 255
+    email:
+      type: string
+      length: 255
+  oneToMany:
+    games:
+      targetEntity: Game
+      mappedBy: player

@@ -1,0 +1,27 @@
+# src/AppBundle/Resources/config/doctrine/Game.orm.yml
+AppBundle\Entity\Game:
+  type: entity
+  table: game
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    created_at:
+      type: datetime
+    updated_at:
+      type: datetime
+      nullable: true
+  manyToOne:
+    targetEntity: Player
+    inversedBy: games
+    joinColumn:
+      name: player_id
+      referencedColumnName: id
+  oneToMany:
+    game_states:
+      targetEntity: GameState
+      mappedBy: gamestate
+  lifecycleCallbacks:
+    prePersist: [ setCreatedAtValue ]
+    preUpdate: [ setUpdatedAtValue ]

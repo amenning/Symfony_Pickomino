@@ -1,0 +1,47 @@
+# src/AppBundle/Resources/config/doctrine/GameState.orm.yml
+AppBundle\Entity\GameState:
+  type: entity
+  table: gamestate
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    grillWorms:
+      type: string
+      length: 3000
+    deadGrillWorms:
+      type: string
+      length: 3000
+    activeDice:
+      type: string
+      legnth: 3000
+    frozenDice:
+      type: string
+      legnth: 3000
+    frozenDiceTotal:
+      type: string
+      legnth: 3000
+    gameStatus:
+      type: string
+      legnth: 3000
+    playerMessage:
+      type: string
+      legnth: 3000
+    playerWorms:
+      type: string
+      legnth: 3000
+    playerWormsTotals:
+      type: string
+      legnth: 3000
+    created_at:
+      type: datetime
+  manyToOne:
+    game:
+      targetEntity: Game
+      inversedBy: gamestates
+      joinColumn:
+        name: game_id
+        referencedColumnName: id
+  lifecycleCallbacks:
+    prePersist: [ setCreatedAtValue ]
