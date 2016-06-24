@@ -1,0 +1,295 @@
+ .slot > img {
+  margin: 0!important;
+  height: 71px;
+  width: 50px;
+ }
+ img {
+  height: 50px;
+  border-radius: 15px;
+ }
+ .container-game {
+	background: url('../img/BackgroundImage.png') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+   /*height: 800px;
+   width: 1600px;
+   height: 100%;
+   width: 100%;
+   margin: 0px auto;
+   border-radius: 4px;
+   */
+ }
+ .
+ .header {
+   border: 2px solid #fff;
+   border-radius: 4px;
+   height: 55px;
+   margin: 14px auto;
+   background-color: #457f86;
+ }
+ .header h2 {
+   height: 30px;
+   margin: auto;
+ }
+ .header h2 {
+   font-size: 14px;
+   margin: 0 0;
+   padding: 0;
+   color: #fff;
+   text-align: center;
+ }
+ .worms{
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   background-color: #457f86;
+   border-radius: 0px 0px 6px 6px;
+   border-style: solid;
+   border-color: #fff;
+   border-width: 0px 2px 2px 2px;
+   min-height: 100px;
+   padding: 5px;
+ }
+  .playerWorms{
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   background-color: #457f86;
+   border-radius: 0px 0px 6px 6px;
+   border-style: solid;
+   border-color: #fff;
+   border-width: 0px 2px 2px 2px;
+   min-height: 100px;
+   padding: 5px;
+ }
+ .twoPlayerWidth{
+ 	width: 49%;
+ }
+ .twoPlayerContainer{
+ 	display: flex;
+ 	justify-content: space-around;
+    flex-wrap: wrap;
+ }
+ .worm{
+   flex: 0 0 auto;
+   background: white;
+   height: 90px;
+   width: 70px;
+   /*margin: 0 auto;*/
+   padding: 0px 0px 0px 0px;
+   border-color: #215f1e;
+   border-style: solid;
+   border-width: 2px 2px 2px 2px;
+   border-radius: 6px;
+   text-align: center;
+ }
+ .img-center{ 
+    display: inline;
+    margin: auto;
+}
+  .activedice{
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   background-color: #457f86;
+   border-color: #fff;
+   border-style: solid;
+   border-width: 0px 2px 2px 2px;
+   border-radius: 0px 0px 6px 6px;
+   min-height: 75px;
+ }
+ .frozendice{
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   background-color: #457f86;
+   border-color: #fff;
+   border-style: solid;
+   border-width: 0px 2px 2px 2px;
+   border-radius: 0px 0px 6px 6px;
+   min-height: 75px;
+ }
+ .dice{
+   flex: 0 0 auto;
+   background: white;
+   height: 51px;
+   width: 51px;
+   margin: 8px;
+   border: 8px solid #215f1e;
+   border-radius: 6px;
+   text-align: center;
+ }
+ .playeroptions{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #457f86;
+   border-color: #fff;
+   border-style: solid;
+   border-width: 0px 2px 2px 2px;
+   border-radius: 0px 0px 6px 6px;
+   min-height: 75px;
+ }
+ .playerNotification{
+   text-align: center;
+   background-color: #457f86;
+   border-radius: 6px;
+   border: 2px solid #fff;
+   color: #fff;
+   font-size: 32px;
+ }
+ .login{
+   text-align: center;
+   background-color: #457f86;
+   border-radius: 6px;
+   border: 2px solid #fff;
+   color: #fff;
+   font-size: 24px;
+   padding: 20px;
+ } 
+ .login input{
+ 	color: #000000;
+ }
+ .login a{
+ 	color: #FFFFFF;
+ }
+ .login .loginBtn {
+ 	color: #FFFFFF;
+ 	width: 200px;
+ }
+ .setup{
+   text-align: center;
+   background-color: #457f86;
+   border-radius: 6px;
+   border: 2px solid #fff;
+   color: #fff;
+   font-size: 24px;
+   padding: 20px;
+ }
+  .setup button{
+   margin: 20px;
+   width: 200px;
+ }
+ 
+  .registration{
+   text-align: center;
+   background-color: #457f86;
+   border-radius: 6px;
+   border: 2px solid #fff;
+   color: #fff;
+   font-size: 24px;
+   padding: 20px;
+ }
+  .registration input{
+   color: #000;
+ }
+  .registration input[type="submit"]{
+   margin: 20px;
+   width: 200px;
+   color: #fff;
+ }
+ 
+ .rules{
+   text-align: left;
+   background-color: #457f86;
+   border-radius: 6px;
+   border: 2px solid #fff;
+   color: #fff;
+   font-size: 24px;
+   padding: 20px;
+ }  
+ .buttons {
+   flex: 0 0 auto;
+   height: 35px;
+   width: 100px;
+   margin: 8px;
+   text-align: center;
+   border-radius: 15px;
+ }
+ .foot {
+   height: 150px;
+   background-color: #457f86;
+   border: 2px solid #fff;
+ }
+ 
+ .logger {
+   color: white;
+   margin: 10px;
+ }
+
+ .titles {
+   color: white;
+   margin: 10px;
+ }
+  .titles-box{
+   text-align: center;
+   background-color: #457f86;
+   border-radius: 6px 6px 0px 0px;
+   border-style: solid;
+   border-color: #fff;
+   border-width: 2px 2px 0px 2px;
+   color: #fff;
+   font-size: 24px;
+ }
+ 
+ .outset {
+   -webkit-box-shadow: 0px 0px 15px -2px rgba(0,0,0,0.75);
+   -moz-box-shadow: 0px 0px 15px -2px rgba(0,0,0,0.75);
+     box-shadow: 0px 0px 15px -2px rgba(0,0,0,0.75);
+ }
+ 
+ .inset {
+   -webkit-box-shadow: inset 0px 0px 15px -2px rgba(0,0,0,0.75);
+   -moz-box-shadow: inset 0px 0px 15px -2px rgba(0,0,0,0.75);
+   box-shadow: inset 0px 0px 15px -2px rgba(0,0,0,0.75);
+ }
+ 
+ .activePlayerHighlight{
+	background: #000;
+ }
+ 
+ .activeHighlight{
+	border: 5px solid #78FA89;
+	border-radius: 15px;
+ }
+  
+  .inactiveHighlight{
+	border: 5px solid #FFF;
+	border-radius: 15px;
+ }
+ 
+ .dead{
+	border: 5px solid #FF0000;
+	border-radius: 15px;
+	position: relative;
+ }
+ .cross{
+  	left: 0;
+  	position: absolute;
+  	top: -50px;
+  	text-align: center;
+  	font-size: 125px;
+  	color: red;
+ }
+ 
+ .frozenHighlight{
+	border: 5px solid #78FAFE;
+	border-radius: 15px;
+ }
+ 
+ .redText{
+ 	background-color: #770000;
+ 	color: #FF0000;
+ }
+ 
+.activeButtonHighlight{
+	border: 5px solid #78FA89;
+	border-radius: 15px;
+ }
+ 
+.bunkButtonHighlight{
+	border: 5px solid #FF0000;
+	border-radius: 15px;
+ }

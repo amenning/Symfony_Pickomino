@@ -7,8 +7,8 @@
 		{% block stylesheets %}
 		<link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap/dist/css/bootstrap.css') }}" type="text/css" />
 		<link rel="stylesheet" href="{{ asset('assets/bower_components/font-awesome/css/font-awesome.css') }}" type="text/css" />
-		<link rel="stylesheet" href="{{ asset('bundles/pickomino/assets/css/main.css') }}" type="text/css" />
-		<link rel="stylesheet" href="{{ asset('bundles/pickomino/assets/css/board.css') }}" type="text/css" />
+		<link rel="stylesheet" href="{{ asset('bundles/app/css/main.css') }}" type="text/css" />
+		<link rel="stylesheet" href="{{ asset('bundles/app/css/board.css') }}" type="text/css" />
 		{% endblock %}
 	</head>
     <body>
@@ -23,62 +23,62 @@
 			<script src="{{ asset('assets/bower_components/angular-touch/angular-touch.js') }}"></script>
 			<script src="{{ asset('assets/bower_components/angular-animate/angular-animate.js') }}"></script>
 
-			<script src="{{ asset('bundles/pickomino/app.module.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/app.module.js') }}"></script>
 			
 			<!-- Directives -->
-			<script src="{{ asset('bundles/pickomino/assets/js/directives/common-header.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/directives/game-header.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/directives/game-body.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/directives/game-login.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/directives/game-registration.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/directives/game-setup.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/directives/game-board.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/directives/game-grill-worms.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/directives/game-player-options.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/directives/game-active-dice.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/directives/game-frozen-dice.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/directives/game-player-worms.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/directives/tutorial-board.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/directives/common-footer.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/directives/tooltip.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/directives/common-header.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/directives/game-header.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/directives/game-body.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/directives/game-login.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/directives/game-registration.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/directives/game-setup.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/directives/game-board.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/directives/game-grill-worms.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/directives/game-player-options.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/directives/game-active-dice.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/directives/game-frozen-dice.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/directives/game-player-worms.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/directives/tutorial-board.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/directives/common-footer.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/directives/tooltip.js') }}"></script>
 			
 			<!-- Services -->
-			<script src="{{ asset('bundles/pickomino/assets/js/services/set-dice-image.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/set-worm-image.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/get-worm-type.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/active-dice-array.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/frozen-dice-array.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/freeze-dice-action.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/take-worm-action.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/steal-worm-action.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/grill-worms-array.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/game-action.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/player-notification.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/player-worms-array.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/check-valid-dice-freeze.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/check-valid-worm-take.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/check-valid-worm-steal.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/active-dice-filter.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/random-dice.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/roll-dice.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/bunk-penalty.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/game-state.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/services/set-player-number.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/set-dice-image.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/set-worm-image.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/get-worm-type.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/active-dice-array.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/frozen-dice-array.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/freeze-dice-action.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/take-worm-action.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/steal-worm-action.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/grill-worms-array.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/game-action.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/player-notification.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/player-worms-array.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/check-valid-dice-freeze.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/check-valid-worm-take.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/check-valid-worm-steal.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/active-dice-filter.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/random-dice.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/roll-dice.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/bunk-penalty.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/game-state.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/services/set-player-number.js') }}"></script>
 			
 			<!-- Controllers -->
-			<script src="{{ asset('bundles/pickomino/assets/js/controllers/game-login-controller.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/controllers/game-header-controller.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/controllers/game-registration-controller.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/controllers/game-setup-controller.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/controllers/game-player-options-controller.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/controllers/game-grill-worms-controller.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/controllers/game-active-dice-controller.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/controllers/game-frozen-dice-controller.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/controllers/game-player-worms-layout-controller.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/controllers/game-player-one-worms-controller.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/controllers/game-player-two-worms-controller.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/controllers/game-body-controller.js') }}"></script>
-			<script src="{{ asset('bundles/pickomino/assets/js/controllers/tutorial-action-controller.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/controllers/game-login-controller.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/controllers/game-header-controller.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/controllers/game-registration-controller.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/controllers/game-setup-controller.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/controllers/game-player-options-controller.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/controllers/game-grill-worms-controller.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/controllers/game-active-dice-controller.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/controllers/game-frozen-dice-controller.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/controllers/game-player-worms-layout-controller.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/controllers/game-player-one-worms-controller.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/controllers/game-player-two-worms-controller.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/controllers/game-body-controller.js') }}"></script>
+			<script src="{{ asset('bundles/app/js/controllers/tutorial-action-controller.js') }}"></script>
 
 			
 			<script>
