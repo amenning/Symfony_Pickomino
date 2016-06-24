@@ -29,4 +29,22 @@ class LoginController extends Controller
 		
 		return new Response($player->getId());
 	}
+	
+	public function registrationAction(Request $request)
+	{
+		$player = new Player();
+		$player->setUsername($request->get('username'));
+		$player->setFirstname($request->get('firstname'));
+		$player->setLastname($request->get('lastname'));
+		$player->setPassword($request->get('password'));
+		$player->setEmail($request->get('email'));
+		
+		$em = $this->getDoctrine()->getManager();
+		
+		$em->persist($player);
+		
+		$em->flush();
+		
+		return $this->redirectToRoute('homepage');
+	}
 }

@@ -7,6 +7,12 @@ homepage:
     defaults:
         _controller: AppBundle:Main:index
 
+registration:
+    path: /registration
+    defaults:
+      _controller: AppBundle:Login:registration
+    methods: [POST]
+
 guest_registration:
     path: /guest_registration
     defaults:
