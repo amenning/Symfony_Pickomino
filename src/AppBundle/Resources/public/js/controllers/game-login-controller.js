@@ -55,12 +55,11 @@ angular.module('pickominoGame')
 			};
 							
 			$http.post("/guest_registration", newGuest)
-			.success(function(data){
+			.success(function(user_id){
 				GameAction.setStatus('gameLogin', false);
 				GameAction.setStatus('gameSetup', true);
-				GameAction.setStatus('firstname', data.firstname);
-				GameAction.setStatus('userID', data.user_id);
-				console.log(data);
+				GameAction.setStatus('firstname', newGuest.firstname);
+				GameAction.setStatus('userID', user_id);
 			});
 		};
 	}
