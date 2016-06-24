@@ -13,11 +13,12 @@ AppBundle\Entity\Game:
       type: datetime
       nullable: true
   manyToOne:
-    targetEntity: Player
-    inversedBy: games
-    joinColumn:
-      name: player_id
-      referencedColumnName: id
+    player:
+      targetEntity: Player
+      inversedBy: games
+      joinColumn:
+        name: player_id
+        referencedColumnName: id
   oneToMany:
     game_states:
       targetEntity: GameState
