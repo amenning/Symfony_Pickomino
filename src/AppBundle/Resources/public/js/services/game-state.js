@@ -28,14 +28,14 @@ angular.module('pickominoGame')
 			newGame: function(){
 				data = {userID: gameState.gameStatus.userID};
 				
-				return $http.post("/new_game", data)
+				return $http.post(Routing.generate('new_game'), data)
 					.success(function(data){
 						gameState.gameID = data;
 					});
 			},
 			
 			save: function(){				
-				return $http.post("/save_game_state", gameState)
+				return $http.post(Routing.generate('save_game_state'), gameState)
 					.success(function(data){
 						gameState.gameStateID = data;
 					});
