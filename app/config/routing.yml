@@ -1,39 +1,7 @@
+ens_jobeet:
+    resource: "@AppBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
-    type:     annotation
-
-homepage:
-    path: /
-    defaults:
-        _controller: AppBundle:Main:index
-
-registration:
-    path: /registration
-    defaults:
-      _controller: AppBundle:Login:registration
-    methods: [POST]
-
-guest_registration:
-    path: /guest_registration
-    defaults:
-      _controller: AppBundle:Login:guestRegistration
-    methods: [POST]
-
-rules:
-    path: /rules
-    defaults:
-        _controller: AppBundle:Main:showRules
-    methods: [GET]
-
-new_game:
-    path: /new_game
-    defaults:
-        _controller: AppBundle:GameState:newGame
-    methods: [POST]
-
-angular_templates:
-    path: /angular_directives/{name}
-    defaults:
-        _controller: AppBundle:AngularDirectives:showDirective
-    methods: [GET]
-        
+    type:     annotation 

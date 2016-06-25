@@ -10,7 +10,6 @@ angular.module('pickominoGame')
 			GameAction.setStatus('playerSetup', false);
 			GameAction.setStatus('roll', true);
 			GameAction.setStatus('gameSetup', false);
-			GameState.newGame();
 			GameState.save();
 		}
 	};

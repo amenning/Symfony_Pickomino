@@ -35,7 +35,7 @@ angular.module('pickominoGame')
 			},
 			
 			save: function(){				
-				return $http.post("app/assets/php/game_state.php", gameState)
+				return $http.post("/save_game_state", gameState)
 					.success(function(data){
 						gameState.gameStateID = data;
 					});
