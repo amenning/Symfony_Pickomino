@@ -17,6 +17,11 @@
         {% endblock %}
         
         {% block javascripts %}
+        	<!-- Define asset base dir for use in js files -->
+        	<script>
+    			var assetsBaseDir = "{{ asset('/') }}";
+			</script>
+        
         	<!-- Vendors -->
 			<script src="{{ asset('assets/bower_components/jquery/dist/jquery.js') }}"></script>
 			<script src="{{ asset('assets/bower_components/bootstrap/dist/js/bootstrap.js') }}"></script>

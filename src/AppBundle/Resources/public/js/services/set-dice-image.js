@@ -5,22 +5,22 @@ angular.module('pickominoGame')
 		imagify: function(diceValue){
 			switch(diceValue){
 				case 1:
-					return 'bundles/app/img/DiceFaceOne.png';
+					return  assetsBaseDir + 'bundles/app/img/DiceFaceOne.png';
 					break;
 				case 2:
-					return 'bundles/app/img/DiceFaceTwo.png';
+					return  assetsBaseDir + 'bundles/app/img/DiceFaceTwo.png';
 					break;
 				case 3:
-					return 'bundles/app/img/DiceFaceThree.png';
+					return  assetsBaseDir + 'bundles/app/img/DiceFaceThree.png';
 					break;
 				case 4:
-					return 'bundles/app/img/DiceFaceFour.png';
+					return  assetsBaseDir + 'bundles/app/img/DiceFaceFour.png';
 					break;
 				case 5:
-					return 'bundles/app/img/DiceFaceFive.png';
+					return  assetsBaseDir + 'bundles/app/img/DiceFaceFive.png';
 					break;
 				case 6:
-					return 'bundles/app/img/OneWormTile.png';
+					return  assetsBaseDir + 'bundles/app/img/OneWormTile.png';
 					break;
 			};
 		}
