@@ -17,7 +17,7 @@ class LoginController extends Controller
 		$post_data = json_decode($request->getContent());
 		$player->setUsername($post_data->username);
 		$player->setFirstname($post_data->firstname);
-		$player->setLastname($post_data->lastname);
+		$player->setLastname($post_data->lastname);		
 		$player->setPassword($post_data->password);
 		$player->setEmail($post_data->email);
 		

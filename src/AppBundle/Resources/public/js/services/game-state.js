@@ -28,7 +28,7 @@ angular.module('pickominoGame')
 			newGame: function(){
 				data = {userID: gameState.gameStatus.userID};
 				
-				return $http.post("app/assets/php/new_game.php", data)
+				return $http.post("/new_game", data)
 					.success(function(data){
 						gameState.gameID = data;
 					});
