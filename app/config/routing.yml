@@ -4,4 +4,7 @@ ens_jobeet:
 
 app:
     resource: "@AppBundle/Controller/"
-    type:     annotation 
+    type:     annotation
+    
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml" 

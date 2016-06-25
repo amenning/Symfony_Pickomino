@@ -3,6 +3,6 @@ angular.module('pickominoGame')
 .directive("tutorialBoard", function() {
 	return {
 		restrict: 'E',
-		templateUrl: "/angular_directives/tutorial-board"
+		templateUrl: Routing.generate('angular_templates', { name: 'tutorial-board'})
 	};
 });	

@@ -3,6 +3,6 @@ angular.module('pickominoGame')
 .directive("gameLogin", function() {
 	return {
 		restrict: 'E',
-		templateUrl: "/angular_directives/game-login"
+		templateUrl: Routing.generate('angular_templates', { name: 'game-login'})
 	};
 });	
