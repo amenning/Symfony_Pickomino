@@ -54,7 +54,7 @@ angular.module('pickominoGame')
 				'email': 'guest@guest.com'					
 			};
 							
-			$http.post("/guest_registration", newGuest)
+			$http.post(Routing.generate('guest_registration'), newGuest)
 			.success(function(user_id){
 				GameAction.setStatus('gameLogin', false);
 				GameAction.setStatus('gameSetup', true);
