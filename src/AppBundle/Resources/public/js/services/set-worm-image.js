@@ -8,25 +8,25 @@ angular.module('pickominoGame')
 				case 22:
 				case 23:
 				case 24:
-					return 'app/assets/img/OneWormTile.png';
+					return 'bundles/app/img/OneWormTile.png';
 					break;
 				case 25:
 				case 26:
 				case 27:
 				case 28:
-					return 'app/assets/img/TwoWormTile.png';
+					return 'bundles/app/img/TwoWormTile.png';
 					break;
 				case 29:
 				case 30:
 				case 31:
 				case 32:
-					return 'app/assets/img/ThreeWormTile.png';
+					return 'bundles/app/img/ThreeWormTile.png';
 					break;
 				case 33:
 				case 34:
 				case 35:
 				case 36:
-					return 'app/assets/img/FourWormTile.png';
+					return 'bundles/app/img/FourWormTile.png';
 					break;
 			};
 		}

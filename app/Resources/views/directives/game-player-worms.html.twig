@@ -1,3 +1,4 @@
+{% verbatim %}
 <div ng-controller="PlayerWormsLayoutController as layoutCtrl" ng-class="{'row-fluid twoPlayerContainer' : layoutCtrl.gameStatus.numPlayers===2 }">
 	<div ng-controller="PlayerOneWormsController as playerOneWorms" ng-class="{ 'twoPlayerWidth' : layoutCtrl.gameStatus.numPlayers===2 }">
 		<div class = 'titles-box' ng-class="{ 'activePlayerHighlight' : layoutCtrl.gameStatus.numPlayers===2 && layoutCtrl.gameStatus.activePlayer===0 }">
@@ -24,3 +25,4 @@
 		</div>
 	</div>
 </div>
+{% endverbatim %}

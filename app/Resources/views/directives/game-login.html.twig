@@ -1,6 +1,7 @@
+{% verbatim %}
 <div class = "login" ng-controller="LoginController as loginCtrl">
 	<!-- SHOW ERROR/SUCCESS MESSAGES --> 
-	<div class="redText" ng-show='message'>{% verbatim %}{{ message }}{% endverbatim %}</div>
+	<div class="redText" ng-show='message'>{{ message }}</div>
 
 	<form ng-submit="loginCtrl.processForm()">
 		<h1>Welcome to Pickomino!</h1>
@@ -15,3 +16,4 @@
 		<br/>
 	</form>
 </div>
+{% endverbatim %}
