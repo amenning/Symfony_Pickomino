@@ -27,7 +27,7 @@ angular.module('pickominoGame')
 		this.processForm = function(){
 			 $http({
   				method  : 'POST',
-  				url     : 'app/assets/php/loginform.inc.php',
+  				url     : Routing.generate('login'),
   				data    : $.param(this.formData),  // pass in data as strings
   				headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
  			})

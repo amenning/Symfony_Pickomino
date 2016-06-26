@@ -10,7 +10,7 @@ parameters:
 
 # Routes to expose to front-end angular js files
 fos_js_routing:
-    routes_to_expose: [homepage, registration, guest_registration, rules, new_game, save_game_state, angular_templates]
+    routes_to_expose: [homepage, login, registration, guest_registration, rules, new_game, save_game_state, angular_templates]
 
 framework:
     #esi:             ~

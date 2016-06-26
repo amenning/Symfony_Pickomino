@@ -2,6 +2,12 @@ homepage:
     path: /
     defaults:
         _controller: AppBundle:Main:index
+        
+login:
+    path: /login
+    defaults:
+        _controller: AppBundle:Login:entry
+    methods: [POST]
 
 registration:
     path: /registration
