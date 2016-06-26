@@ -8,6 +8,12 @@ login:
     defaults:
         _controller: AppBundle:Login:entry
     methods: [POST]
+    
+logout:
+    path: /logout
+    defaults:
+        _controller: AppBundle:Login:logout
+    methods: [GET]
 
 registration:
     path: /registration

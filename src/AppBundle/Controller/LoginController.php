@@ -68,6 +68,13 @@ class LoginController extends Controller
 		return new Response($response);
 	}
 		
+	public function logoutAction(Request $request)
+	{
+		$session = $request->getSession();
+		$session->invalidate();
+		return $this->redirectToRoute('homepage');
+	}
+	
 	public function guestRegistrationAction(Request $request)
 	{
 		$player = new Player();

@@ -38,7 +38,7 @@
 				</ul>
 			</li>
 			<li><a href='{{ url('rules') }}' target="_blank">Rules</a></li>
-			<li ng-show='gameHeaderCtrl.name.firstname'><a href="app/assets/php/logout.php">Welcome {% verbatim %}{{gameHeaderCtrl.name.firstname}}{% endverbatim %}, Log out</a></li>
+			<li ng-show='gameHeaderCtrl.name.firstname'><a href="{{ url('logout') }}">Welcome {% verbatim %}{{gameHeaderCtrl.name.firstname}}{% endverbatim %}, Log out</a></li>
 		</ul>
 	</div>
 </div>
