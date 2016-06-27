@@ -48,6 +48,7 @@ angular.module('pickominoGame')
 				return $http.post(Routing.generate('load_game'), data)
 					.success(function(data){
 						if(data!="false"){
+							console.log(data.gameStateID);
 							gameState.gameID=data;
 							gameState.gameStateID = data.gameStateID;
 							GameAction.loadState(data.gameStatus);

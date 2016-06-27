@@ -91,7 +91,8 @@ class GameStateController extends Controller
 			$game_states = $this->getDoctrine()
 				->getRepository('AppBundle:GameState')
 	        	->findBy(
-	    			array('game' => $currentGameID)
+	    			array('game' => $currentGameID),
+	    			array('id' => 'ASC')
 				);		
 			$current_game_state = end($game_states);
 					
