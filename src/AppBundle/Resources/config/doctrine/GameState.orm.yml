@@ -15,25 +15,25 @@ AppBundle\Entity\GameState:
       length: 3000
     activeDice:
       type: string
-      legnth: 3000
+      length: 2000
     frozenDice:
       type: string
-      legnth: 3000
+      length: 2000
     frozenDiceTotal:
       type: string
-      legnth: 3000
+      length: 2000
     gameStatus:
       type: string
-      legnth: 3000
+      length: 2000
     playerMessage:
       type: string
-      legnth: 3000
+      length: 2000
     playerWorms:
       type: string
-      legnth: 3000
+      length: 2000
     playerWormsTotals:
       type: string
-      legnth: 3000
+      length: 2000
     created_at:
       type: datetime
   manyToOne:

@@ -45,21 +45,10 @@ angular.module('pickominoGame')
 				data = {userID: gameState.gameStatus.userID};
 				gameStateScope = this;
 				
-				return $http.post("app/assets/php/load_game.php", data)
+				return $http.post(Routing.generate('load_game'), data)
 					.success(function(data){
-						if(data!=false){
+						if(data!="false"){
 							gameState.gameID=data;
-							gameStateScope.loadGameState();
-						}
-					});
-			},
-			
-			loadGameState: function(){
-				data = {gameID: gameState.gameID};
-				
-				return $http.post("app/assets/php/load_game_state.php", data)
-					.success(function(data){
-						if(data!=false){
 							gameState.gameStateID = data.gameStateID;
 							GameAction.loadState(data.gameStatus);
 							GrillWormsArray.loadGrillWormsState(data.grillWorms);

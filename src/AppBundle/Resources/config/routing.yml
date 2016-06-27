@@ -44,6 +44,12 @@ save_game_state:
     defaults:
         _controller: AppBundle:GameState:saveGame
     methods: [POST]
+    
+load_game:
+    path: /load_game
+    defaults:
+        _controller: AppBundle:GameState:loadGame
+    methods: [POST]
 
 angular_templates:
     path: /angular_directives/{name}

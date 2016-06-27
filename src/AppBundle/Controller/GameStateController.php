@@ -7,8 +7,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Doctrine\ORM\EntityRepository;
 use AppBundle\Entity\Game;
 use AppBundle\Entity\GameState;
+use AppBundle\Entity\Player;
 
 class GameStateController extends Controller
 {
@@ -21,6 +23,7 @@ class GameStateController extends Controller
 		
 		$game = new Game();
 		$game->setPlayer($player);
+		$player->addGame($game);
 				
 		$em = $this->getDoctrine()->getManager();
 		
@@ -34,6 +37,7 @@ class GameStateController extends Controller
 	public function saveGameAction(Request $request)
 	{
 		$post_data = json_decode($request->getContent());			
+		
 		$gameStatus = serialize($post_data->gameStatus);
 		$grillWorms = serialize($post_data->grillWorms);
 		$deadGrillWorms = serialize($post_data->deadGrillWorms);
@@ -59,6 +63,8 @@ class GameStateController extends Controller
 		$new_gamestate->setFrozenDiceTotal($frozenDiceTotal);
 		$new_gamestate->setPlayerWorms($playerWorms);
 		$new_gamestate->setPlayerWormsTotals($playerWormsTotals);
+		
+		$current_game->addGameState($new_gamestate);
 				
 		$em = $this->getDoctrine()->getManager();
 		
@@ -67,5 +73,56 @@ class GameStateController extends Controller
 		$em->flush();
 		
 		return new Response($new_gamestate->getId());
-	}		
+	}	
+
+	public function loadGameAction(Request $request)
+	{
+		$post_data = json_decode($request->getContent());				
+		
+		$player = $this->getDoctrine()
+			->getRepository('AppBundle:Player')
+        	->find($post_data->userID);
+			
+		$games = $player->getGames();
+		
+		if(sizeof($games)>0){
+			$currentGameID = $games->last()->getId();
+	
+			$game_states = $this->getDoctrine()
+				->getRepository('AppBundle:GameState')
+	        	->findBy(
+	    			array('game' => $currentGameID)
+				);		
+			$current_game_state = end($game_states);
+					
+			$gameStateID = $current_game_state->getId();
+			$gameStatus = unserialize($current_game_state->getGameStatus());
+			$grillWorms = unserialize($current_game_state->getGrillWorms());
+			$deadGrillWorms = unserialize($current_game_state->getDeadGrillWorms());
+			$playerMessage = unserialize($current_game_state->getPlayerMessage());
+			$activeDice = unserialize($current_game_state->getActiveDice());
+			$frozenDice = unserialize($current_game_state->getFrozenDice());
+			$frozenDiceTotal = unserialize($current_game_state->getFrozenDiceTotal());
+			$playerWorms = unserialize($current_game_state->getPlayerWorms());
+			$playerWormsTotals = unserialize($current_game_state->getPlayerWormsTotals());			
+		
+			$response = json_encode(array(  'gameStateID' => $gameStateID,
+											'gameID' => $currentGameID,
+											'gameStatus' => $gameStatus, 
+							  				'grillWorms' => $grillWorms,
+							  				'deadGrillWorms' => $deadGrillWorms,
+											'activeDice' => $activeDice,
+											'frozenDice' => $frozenDice,
+											'gameStatus' => $gameStatus,
+											'playerMessage' => $playerMessage,
+											'playerWorms' => $playerWorms,
+											'playerWormsTotals' => $playerWormsTotals
+									));						  
+		} else {
+			$response = json_encode(false);
+		} 
+		
+		return new Response($response);
+	}
+	
 }

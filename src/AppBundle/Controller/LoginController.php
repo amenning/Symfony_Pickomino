@@ -40,7 +40,7 @@ class LoginController extends Controller
 						
 						$data['success'] = true;
 						$data['firstname'] = $firstname;
-						$data['user_id'] = $user_id;
+						$data['userID'] = $user_id;
 					}
 				}else{
 					$errors['message'] = 'Invalid username/password!';
