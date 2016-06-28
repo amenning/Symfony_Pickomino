@@ -218,4 +218,3 @@ class Player extends BaseUser
         return $this->games;
     }
 }
-

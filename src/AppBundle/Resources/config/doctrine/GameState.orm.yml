@@ -39,7 +39,7 @@ AppBundle\Entity\GameState:
   manyToOne:
     game:
       targetEntity: Game
-      inversedBy: gamestates
+      inversedBy: game_states
       joinColumn:
         name: game_id
         referencedColumnName: id

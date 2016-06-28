@@ -22,7 +22,7 @@ AppBundle\Entity\Game:
   oneToMany:
     game_states:
       targetEntity: GameState
-      mappedBy: gamestate
+      mappedBy: game
   lifecycleCallbacks:
     prePersist: [ setCreatedAtValue ]
     preUpdate: [ setUpdatedAtValue ]
