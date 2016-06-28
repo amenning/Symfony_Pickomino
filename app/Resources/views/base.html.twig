@@ -16,9 +16,15 @@
 		{% verbatim %}
 		<!--div ng-controller="LoginController as loginCtrl" ng-init="loginCtrl.setUser('{{user_id }}', '{{firstname }}')"></div-->
     	{% endverbatim %}
-    	
-        {% block body %}
-        {% endblock %}
+ 
+		<div>
+			<game-header></game-header>
+			
+        	{% block body %}
+        	{% endblock %}
+		
+			<common-footer></common-footer>
+		</div>    	
         
         {% block javascripts %}
         	<!-- Define asset base dir for use in js files -->
