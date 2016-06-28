@@ -4,12 +4,13 @@
 
 {% block body %}	
 	
-	<div ng-controller="LoginController as loginCtrl" ng-init="loginCtrl.setUser('<?php echo $user_id ?>', '<?php echo $firstname ?>')">
-	</div>
-	
 	<div>
 		<game-header></game-header>
-	
+		
+		<div class = "login"?
+		{% block content %}{% endblock %}
+		</div>
+		
 		<game-body></game-body>
 	
 		<common-footer></common-footer>

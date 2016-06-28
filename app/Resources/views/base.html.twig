@@ -12,8 +12,10 @@
 		{% endblock %}
 	</head>
     <body>	
-	
-		<div ng-controller="LoginController as loginCtrl" ng-init="loginCtrl.setUser('{{user_id}}', '{{firstname}}')"></div>
+		
+		{% verbatim %}
+		<!--div ng-controller="LoginController as loginCtrl" ng-init="loginCtrl.setUser('{{user_id }}', '{{firstname }}')"></div-->
+    	{% endverbatim %}
     	
         {% block body %}
         {% endblock %}

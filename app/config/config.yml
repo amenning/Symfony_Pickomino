@@ -12,9 +12,14 @@ parameters:
 fos_js_routing:
     routes_to_expose: [homepage, login, logout, registration, guest_registration, rules, new_game, save_game_state, load_game, angular_templates]
 
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AppBundle\Entity\Player
+
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
