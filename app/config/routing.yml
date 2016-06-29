@@ -1,4 +1,4 @@
-ens_jobeet:
+pickomino:
     resource: "@AppBundle/Resources/config/routing.yml"
     prefix:   /
 
