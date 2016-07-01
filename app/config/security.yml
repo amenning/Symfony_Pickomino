@@ -16,15 +16,19 @@ security:
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
+        #dev:
+        #    pattern: ^/(_(profiler|wdt)|css|images|js)/
+        #    security: false
 
         main:
             form_login:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
-            logout: true
+                default_target_path:  /%homepage_name%
+                always_use_default_target_path: true
+            logout: 
+                path: /logout
+                target: /%homepage_name%
             anonymous: true
             # activate different ways to authenticate
 
@@ -40,3 +44,5 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/angular_templates, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/%homepage_name%, role: ROLE_USER }
+        

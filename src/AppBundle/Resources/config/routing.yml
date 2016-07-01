@@ -1,5 +1,13 @@
-homepage:
+# redirecting the root
+root:
     path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /%homepage_name%
+        permanent: true
+
+homepage:
+    path: /%homepage_name%
     defaults:
         _controller: AppBundle:Main:index
         
