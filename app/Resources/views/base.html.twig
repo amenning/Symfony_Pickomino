@@ -13,10 +13,10 @@
 	</head>
     <body>	
 		
-		{% verbatim %}
-		<!--div ng-controller="LoginController as loginCtrl" ng-init="loginCtrl.setUser('{{user_id }}', '{{firstname }}')"></div-->
-    	{% endverbatim %}
- 
+		{% if app.user %}
+			<div ng-controller="LoginController as loginCtrl" ng-init="loginCtrl.setUser('{{ app.user.id }}', '{{ app.user.username }}')"></div>
+ 		{% endif %}
+ 		
 		<div>
 			<game-header></game-header>
 			
