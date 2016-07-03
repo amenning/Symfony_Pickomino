@@ -32,6 +32,7 @@ class ApplicationAvailabilityFunctionalTest extends WebTestCase
 	 public function urlProvider()
 	 {
 	 	return array(
+	 		// input url, expected status code = 200, expected redirectUrlRegex = null 
 			array('/', 301, '/home/'),
 			array('/home', 302, '/login/'),
 			array('/login'),
