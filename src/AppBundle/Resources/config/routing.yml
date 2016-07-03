@@ -5,11 +5,13 @@ root:
         _controller: FrameworkBundle:Redirect:urlRedirect
         path: /%homepage_name%
         permanent: true
+    methods: [GET]
 
 homepage:
     path: /%homepage_name%
     defaults:
         _controller: AppBundle:Main:index
+    methods: [GET]
         
 login:
     path: /login
