@@ -2,6 +2,8 @@
 
 {% block body %}
     <div class="login">
-    	{% block fos_user_content %}{% endblock %}
+    	{% block fos_user_content %}
+    		{% trans_default_domain 'FOSUserBundle' %}
+    	{% endblock %}
     </div>
 {% endblock %}

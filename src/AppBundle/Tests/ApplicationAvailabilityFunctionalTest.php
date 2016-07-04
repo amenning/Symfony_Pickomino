@@ -22,6 +22,7 @@ class ApplicationAvailabilityFunctionalTest extends WebTestCase
 			$this->assertEquals($client->getResponse()->getStatusCode(), $statusCode);
 			$this->assertRegExp($targetUrlRegex,$headers["location"][0]);
 		} else {
+			// If url behaves unexpectedly, dump attempted url and response status code with content
 			var_dump($url);
 			var_dump($client->getResponse()->getStatusCode());
 			var_dump($client->getResponse()->getContent());
@@ -32,12 +33,13 @@ class ApplicationAvailabilityFunctionalTest extends WebTestCase
 	 public function urlProvider()
 	 {
 	 	return array(
-	 		// input url, expected status code = 200, expected redirectUrlRegex = null 
+	 		// input GET url, expected status code = 200, expected redirectUrlRegex = null 
 			array('/', 301, '/home/'),
 			array('/home', 302, '/login/'),
 			array('/login'),
 			array('/logout', 302, '/home/'),
 			array('/register', 301, '/register\//'),
+			array('/register/'),
 			array('/rules'),
 			array('/angular_directives/common-footer'),
 			array('/angular_directives/common-header'),
