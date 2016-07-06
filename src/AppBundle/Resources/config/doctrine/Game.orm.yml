@@ -19,6 +19,7 @@ AppBundle\Entity\Game:
       joinColumn:
         name: player_id
         referencedColumnName: id
+        onDelete: CASCADE
   oneToMany:
     game_states:
       targetEntity: GameState

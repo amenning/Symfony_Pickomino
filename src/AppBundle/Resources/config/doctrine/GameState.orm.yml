@@ -43,5 +43,6 @@ AppBundle\Entity\GameState:
       joinColumn:
         name: game_id
         referencedColumnName: id
+        onDelete: CASCADE
   lifecycleCallbacks:
     prePersist: [ setCreatedAtValue ]

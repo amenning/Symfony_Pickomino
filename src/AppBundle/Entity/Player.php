@@ -184,6 +184,11 @@ class Player extends BaseUser
         return $this->email;
     }
 
+    public function getSalt()
+    {
+        return null;
+    }
+
     /**
      * Add game
      *
