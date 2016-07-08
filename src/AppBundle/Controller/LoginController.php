@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use FOS\UserBundle\Util\UserManipulator;
 use AppBundle\Entity\Player;
 
 class LoginController extends Controller
@@ -77,21 +78,37 @@ class LoginController extends Controller
 	
 	public function guestRegistrationAction(Request $request)
 	{
-		$player = new Player();
-		$post_data = json_decode($request->getContent());
-		$player->setUsername($post_data->username);
-		$player->setFirstname($post_data->firstname);
-		$player->setLastname($post_data->lastname);		
-		$player->setPassword($post_data->password);
-		$player->setEmail($post_data->email);
-		
+		$random = random_int(1,99999);
+		$date = new \DateTime();
+		$time = $date->getTimestamp();
+		$username   = 'Guest'.$random.$time;
+        $email      = 'guest'.$random.$time.'@guest.com';
+        $password   = 'test456';
+        $isactive   = true;
+        $superadmin = false;
+		$firstname = 'Guest';
+		$lastname = '';
+
 		$em = $this->getDoctrine()->getManager();
+        $manipulator = $this->container->get('fos_user.util.user_manipulator');
+        
+        $guestUser = $manipulator->create($username, $password, $email, $isactive, $superadmin);
+		$guestUser->setFirstname($firstname);
+		$guestUser->setLastname($lastname);
 		
-		$em->persist($player);
+		$em->persist($guestUser);
+    	$em->flush();
 		
-		$em->flush();
+		$data['firstname'] = $firstname;
+		$data['userID'] = $guestUser->getId();
 		
-		return new Response($player->getId());
+		// return all our data to an AJAX call
+		$response = json_encode($data);			
+			
+		return new Response($response);
+		
+		
+		//return new Response($guestUser->getId());
 	}
 	
 	public function registrationAction(Request $request)

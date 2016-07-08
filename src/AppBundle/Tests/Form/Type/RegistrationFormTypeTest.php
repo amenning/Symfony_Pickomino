@@ -3,6 +3,7 @@
 namespace AppBundle\Tests\Form\Type;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use FOS\UserBundle\Util\UserManipulator;
 
 class RegistrationFormTypeTest extends WebTestCase
 {
@@ -30,7 +31,7 @@ class RegistrationFormTypeTest extends WebTestCase
 		$client->followRedirect(true);
 		$this->assertEquals('FOS\UserBundle\Controller\RegistrationController::confirmedAction', $client->getRequest()->attributes->get('_controller'));
 		
-		// testing for the new job database record
+		// testing for the new user database record
 		$kernel = static::createKernel();
 		$kernel->boot();
 		$em = $kernel->getContainer()->get('doctrine.orm.entity_manager');
@@ -46,5 +47,35 @@ class RegistrationFormTypeTest extends WebTestCase
 		$query = $em->createQuery('SELECT count(p.id) from AppBundle:Player p WHERE p.username = :username');
 		$query->setParameter('username', 'test456');
 		$this->assertTrue(0 == $query->getSingleScalarResult());
+	}
+
+	public function testGuest()
+	{
+		
+        $username   = 'Guest'.;
+        $email      = 'guest'..'@guest.com';
+        $password   = 'test456';
+        $isactive   = true;
+        $superadmin = false;
+		$firstname = 'Guest';
+		$lastname = '';
+
+        $kernel = static::createKernel();
+		$kernel->boot();
+		$em = $kernel->getContainer()->get('doctrine.orm.entity_manager');
+        $manipulator = $kernel->getContainer()->get('fos_user.util.user_manipulator');
+        
+        $guestUser = $manipulator->create($username, $password, $email, $isactive, $superadmin);
+		$guestUser->setFirstname($firstname);
+		$guestUser->setLastname($lastname);
+		
+		$em->persist($guestUser);
+    	$em->flush();
+
+		// testing for the new user database record		
+		$query = $em->createQuery('SELECT count(p.id) from AppBundle:Player p WHERE p.username = :username');
+		$query->setParameter('username', 'test567');
+		$this->assertTrue(1 == $query->getSingleScalarResult());
+
 	}
 }

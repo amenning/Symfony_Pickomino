@@ -5,7 +5,8 @@ angular.module('pickominoGame')
 	'GameState',
 	'$http',
 	'$scope',
-	function(GameAction, GameState, $http, $scope){
+	'$window',
+	function(GameAction, GameState, $http, $scope, $window){
 		this.gameStatus = GameAction.status;
 		$scope.message = '';
 		this.formData = {};
@@ -44,22 +45,25 @@ angular.module('pickominoGame')
 		};
 		
 		this.guestLogin = function(){
+			/*
 			var randomPassword = "Guest" + Math.floor((Math.random() * 99999) + 1);
 			newGuest = {
-				'firstname': "Guest",
-				'lastname': "",
-				'username': "Guest" + Math.floor((Math.random() * 99999) + 1),
-				'password': randomPassword,
-				'password_check': randomPassword,
-				'email': 'guest@guest.com'					
+				'fos_user_registration_form[firstname]': "Guest",
+				'fos_user_registration_form[lastname]': "",
+				'fos_user_registration_form[username]': "Guest" + Math.floor((Math.random() * 99999) + 1),
+				'fos_user_registration_form[plainPassword][first]': randomPassword,
+				'fos_user_registration_form[plainPassword][second]': randomPassword,
+				'fos_user_registration_form[email]': "guest@guest.com"					
 			};
+			*/
 							
-			$http.post(Routing.generate('guest_registration'), newGuest)
-			.success(function(user_id){
+			$http.post(Routing.generate('guest_registration'))
+			.success(function(data){
 				GameAction.setStatus('gameLogin', false);
 				GameAction.setStatus('gameSetup', true);
-				GameAction.setStatus('firstname', newGuest.firstname);
-				GameAction.setStatus('userID', user_id);
+				GameAction.setStatus('firstname', data.firstname);
+				GameAction.setStatus('userID', data.userID);
+				$window.location.href = Routing.generate('homepage');
 			});
 		};
 	}

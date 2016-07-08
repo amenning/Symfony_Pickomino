@@ -10,7 +10,7 @@ parameters:
 
 # Routes to expose to front-end angular js files
 fos_js_routing:
-    routes_to_expose: [homepage, login, login_check, logout, registration, guest_registration, rules, new_game, save_game_state, load_game, angular_templates]
+    routes_to_expose: [homepage, login, login_check, logout, registration, fos_user_registration_register, guest_registration, rules, new_game, save_game_state, load_game, angular_templates]
 
 fos_user:
     db_driver: orm
