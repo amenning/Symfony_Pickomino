@@ -35,7 +35,7 @@ guest_registration:
     path: /guest_registration
     defaults:
       _controller: AppBundle:Login:guestRegistration
-    methods: [POST]
+    methods: [GET]
 
 rules:
     path: /rules

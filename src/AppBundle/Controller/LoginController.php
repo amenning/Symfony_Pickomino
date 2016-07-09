@@ -9,6 +9,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\UserBundle\Util\UserManipulator;
 use AppBundle\Entity\Player;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
 class LoginController extends Controller
 {
@@ -99,16 +102,25 @@ class LoginController extends Controller
 		$em->persist($guestUser);
     	$em->flush();
 		
-		$data['firstname'] = $firstname;
-		$data['userID'] = $guestUser->getId();
+		
+		$token = new UsernamePasswordToken($guestUser, $guestUser->getPassword(), 'main', $guestUser->getRoles());
+
+		$context = $this->get('security.context');
+    	$context->setToken($token);
+
+        // Fire the login event
+        $event = new InteractiveLoginEvent($request, $token);
+        $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
+		
+		//$data['firstname'] = $firstname;
+		//$data['userID'] = $guestUser->getId();
 		
 		// return all our data to an AJAX call
-		$response = json_encode($data);			
+		//$response = json_encode($data);			
 			
-		return new Response($response);
+		//return new Response($response);
 		
-		
-		//return new Response($guestUser->getId());
+		return $this->redirectToRoute('homepage');
 	}
 	
 	public function registrationAction(Request $request)

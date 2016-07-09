@@ -14,7 +14,7 @@
     <body>	
 		
 		{% if app.user %}
-			<div ng-controller="LoginController as loginCtrl" ng-init="loginCtrl.setUser('{{ app.user.id }}', '{{ app.user.username }}')"></div>
+			<div ng-controller="LoginController as loginCtrl" ng-init="loginCtrl.setUser('{{ app.user.id }}', '{{ app.user.firstname }}')"></div>
  		{% endif %}
  		
 		<div>
