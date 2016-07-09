@@ -51,31 +51,16 @@ class RegistrationFormTypeTest extends WebTestCase
 
 	public function testGuest()
 	{
+        $client = static::createClient();
 		
-        $username   = 'Guest'.;
-        $email      = 'guest'..'@guest.com';
-        $password   = 'test456';
-        $isactive   = true;
-        $superadmin = false;
-		$firstname = 'Guest';
-		$lastname = '';
-
-        $kernel = static::createKernel();
-		$kernel->boot();
-		$em = $kernel->getContainer()->get('doctrine.orm.entity_manager');
-        $manipulator = $kernel->getContainer()->get('fos_user.util.user_manipulator');
-        
-        $guestUser = $manipulator->create($username, $password, $email, $isactive, $superadmin);
-		$guestUser->setFirstname($firstname);
-		$guestUser->setLastname($lastname);
+		// test guest login path use guestRegistrationAction
+		$crawler = $client->request('GET', '/angular_directives/game-login');		
+		$link = $crawler->selectLink('Guest Login')->link();
+		$crawler = $client->click($link);
+		$this->assertEquals('AppBundle\Controller\LoginController::guestRegistrationAction', $client->getRequest()->attributes->get('_controller'));
 		
-		$em->persist($guestUser);
-    	$em->flush();
-
-		// testing for the new user database record		
-		$query = $em->createQuery('SELECT count(p.id) from AppBundle:Player p WHERE p.username = :username');
-		$query->setParameter('username', 'test567');
-		$this->assertTrue(1 == $query->getSingleScalarResult());
-
+		// following successful guest creation, it redirects to homepage
+		$client->followRedirect(true);
+		$this->assertEquals('AppBundle\Controller\MainController::indexAction', $client->getRequest()->attributes->get('_controller'));
 	}
 }
