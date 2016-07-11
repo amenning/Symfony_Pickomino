@@ -16,6 +16,7 @@ imports:
 # Doctrine Configuration
 doctrine:
     dbal:
+        url:      "%database_url%"
         driver:   pdo_pgsql
         host:     "%database_host%"
         port:     "%database_port%"
@@ -39,7 +40,7 @@ monolog:
     handlers:
         main:
             type:         fingers_crossed
-            action_level: error
+            action_level: %monolog_action_level%
             handler:      nested
         nested:
             type:  stream
