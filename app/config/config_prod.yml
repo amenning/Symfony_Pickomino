@@ -16,8 +16,8 @@ imports:
 # Doctrine Configuration
 doctrine:
     dbal:
-        url:      "%database_url%"
         driver:   pdo_pgsql
+        url:      "%database_url%"
         #host:     "%database_host%"
         #port:     "%database_port%"
         #dbname:   "%database_name%"
