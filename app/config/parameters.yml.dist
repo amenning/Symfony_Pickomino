@@ -21,4 +21,4 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
     
-    homepage_name: home
+    homepage_name:  home
