@@ -1,0 +1,23 @@
+{
+  "name": "pickomino",
+  "version": "1.0.0",
+  "description": "Pickomino  ======================",
+  "main": "index.js",
+  "dependencies": {
+    "bower": "^1.7.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metakata/Symfony_Pickomino.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/metakata/Symfony_Pickomino/issues"
+  },
+  "homepage": "https://github.com/metakata/Symfony_Pickomino#readme"
+}
