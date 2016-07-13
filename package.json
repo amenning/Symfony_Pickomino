@@ -1,7 +1,7 @@
 {
   "name": "pickomino",
   "version": "1.0.0",
-  "description": "Pickomino  ======================",
+  "description": "Pickomino  =====================",
   "dependencies": {
     "bower": "^1.7.9"
   },
