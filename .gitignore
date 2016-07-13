@@ -27,9 +27,6 @@
 !bin/symfony_requirements
 /vendor/
 
-# Managed by Node
-/node_modules
-
 # Assets and user uploads
 /web/bundles/
 /web/uploads/
