@@ -22,7 +22,13 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/jsrouting-bundle": "^1.6",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "sonata-project/block-bundle": "^3.1",
+        "sonata-project/jquery-bundle": "^1.10",
+        "sonata-project/exporter": "^1.5",
+        "sonata-project/doctrine-orm-admin-bundle": "^3.0",
+        "sonata-project/core-bundle": "^3.0",
+        "sonata-project/admin-bundle": "^3.4"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

@@ -20,6 +20,20 @@ fos_user:
         form:
             type: AppBundle\Form\RegistrationType
 
+sonata_admin:
+    title:  Pickomino Admin
+    
+    
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.admin_list:
+            context: [admin]
+            
+        sonata.block.service.text:
+        sonata.block.service.action:
+        sonata.block.service.rss:
+
 framework:
     #esi:             ~
     translator:      { fallbacks: ["%locale%"] }
