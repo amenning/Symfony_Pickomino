@@ -28,7 +28,8 @@
         "sonata-project/exporter": "^1.5",
         "sonata-project/doctrine-orm-admin-bundle": "^3.0",
         "sonata-project/core-bundle": "^3.0",
-        "sonata-project/admin-bundle": "^3.4"
+        "sonata-project/admin-bundle": "^3.4",
+        "sonata-project/cache-bundle": "^2.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
