@@ -1,22 +1,22 @@
 # src/AppBundle/Resources/config/services.yml
 
 services:
-    app.admin.player:
+    admin.player:
          class: AppBundle\Admin\PlayerAdmin
          tags:
-             - { name: sonata.admin, manager_type: orm, group: appbundle, label: Player }
+             - { name: sonata.admin, manager_type: orm, label: Player }
          arguments: [null, AppBundle\Entity\Player, AppBundle:PlayerAdmin]
 
 
-    app.admin.game:
+    admin.game:
          class: AppBundle\Admin\GameAdmin
          tags:
-             - { name: sonata.admin, manager_type: orm, group: appbundle, label: Game }
+             - { name: sonata.admin, manager_type: orm, label: Game }
          arguments: [null, AppBundle\Entity\Game, AppBundle:GameAdmin]
 
 
-    app.admin.gamestate:
+    admin.gamestate:
          class: AppBundle\Admin\GameStateAdmin
          tags:
-             - { name: sonata.admin, manager_type: orm, group: appbundle, label: GameState }
+             - { name: sonata.admin, manager_type: orm, label: GameState }
          arguments: [null, AppBundle\Entity\GameState, AppBundle:GameStateAdmin]
