@@ -25,8 +25,8 @@ class PlayerAdmin extends Admin
 			->add('lastname')
 			->add('email')
 			->add('enabled')
-			->add('password')
-			->add('roles')
+			//->add('password')
+			//->add('roles')
 		;
 	}
 	
