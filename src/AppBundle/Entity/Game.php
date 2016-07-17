@@ -39,7 +39,15 @@ class Game
     {
         $this->game_states = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
+	
+	/**
+	 * toString
+	 */
+    public function __toString()
+	{
+		return $this->getId();
+	}
+	 
     /**
      * Get id
      *

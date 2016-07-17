@@ -12,5 +12,33 @@ use Sonata\AdminBundle\Form\FormMapper;
 
 class GameAdmin extends Admin
 {
+    protected $datagridValues = array(
+		'_sort_order' => 'ASC',
+		'_sort_by' => 'id'
+	);
 	
+	protected function configureFormFields(FormMapper $formMapper)
+	{
+		$formMapper
+		    ->add('player')
+		;
+	}
+	
+	
+	protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+	{
+		$datagridMapper
+		    ->add('player')
+		;
+	}
+	
+	protected function configureListFields(ListMapper $listMapper)
+	{
+		$listMapper
+			->addIdentifier('id')
+			->add('player')
+			->add('created_at', 'datetime', array('date_format' => 'yyyy-MM-dd HH:mm:ss'))
+			->add('updated_at', 'datetime', array('date_format' => 'yyyy-MM-dd HH:mm:ss'))
+		;
+	}	
 }
