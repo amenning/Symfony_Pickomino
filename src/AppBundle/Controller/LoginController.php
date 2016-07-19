@@ -101,8 +101,7 @@ class LoginController extends Controller
 		
 		$em->persist($guestUser);
     	$em->flush();
-		
-		
+			
 		$token = new UsernamePasswordToken($guestUser, $guestUser->getPassword(), 'main', $guestUser->getRoles());
 
 		$context = $this->get('security.context');
@@ -111,14 +110,6 @@ class LoginController extends Controller
         // Fire the login event
         $event = new InteractiveLoginEvent($request, $token);
         $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
-		
-		//$data['firstname'] = $firstname;
-		//$data['userID'] = $guestUser->getId();
-		
-		// return all our data to an AJAX call
-		//$response = json_encode($data);			
-			
-		//return new Response($response);
 		
 		return $this->redirectToRoute('homepage');
 	}
