@@ -1,5 +1,4 @@
-    <?php
-// src/AppBundle/Tests/ApplicationAvailabilityFunctionalTest.php
+<?php
 namespace AppBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
