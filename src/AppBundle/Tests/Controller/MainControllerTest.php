@@ -54,10 +54,7 @@ class MainControllerTest extends WebTestCase
         $client = $this->createClientWithUser();
 
         $container = $client->getContainer();
-
         $user = $container->get('security.token_storage')->getToken()->getUser();
-
-        $session = $container->get('session');
 
         $userId = $user->getId();
         $firstname = $user->getFirstname();
