@@ -5,7 +5,7 @@ parameters:
     database_url: 	   ~
     database_host:     127.0.0.1
     database_port:     ~
-    database_name:     symfony
+    database_name:     symfony_pickomino
     database_user:     ~
     database_password: ~
     # You should uncomment this if you want use pdo_sqlite

@@ -22,16 +22,16 @@ class MainController extends Controller
 			$firstname = null;
 			$lastname = null;
 		}
-							
+
 		return $this->render('main/pickomino.html.twig', array(
 			'user_id' => $user_id,
 			'firstname' => $firstname,
 			'lastname' => $lastname,
 		));
 	}
-	
+
 	public function showRulesAction()
-	{				
+	{
 		return $this->render('rules/rules.html.twig', array());
-	}	
+	}
 }

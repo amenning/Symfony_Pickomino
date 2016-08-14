@@ -1,4 +1,4 @@
-<?php
+    <?php
 // src/AppBundle/Tests/ApplicationAvailabilityFunctionalTest.php
 namespace AppBundle\Tests;
 
@@ -13,12 +13,12 @@ class ApplicationAvailabilityFunctionalTest extends WebTestCase
 	 {
 	 	$client = self::createClient();
 		$client->request('GET', $url);
-		
+
 		if($statusCode === 200){
 			$this->assertTrue($client->getResponse()->isSuccessful());
 		} elseif ($statusCode === 301 || $statusCode === 302) {
 			$headers = $client->getInternalResponse()->getHeaders();
-			
+
 			$this->assertEquals($client->getResponse()->getStatusCode(), $statusCode);
 			$this->assertRegExp($targetUrlRegex,$headers["location"][0]);
 		} else {
@@ -29,11 +29,11 @@ class ApplicationAvailabilityFunctionalTest extends WebTestCase
 			$this->assertTrue(FALSE);
 		}
 	 }
-	 
+
 	 public function urlProvider()
 	 {
 	 	return array(
-	 		// input GET url, expected status code = 200, expected redirectUrlRegex = null 
+	 		// input GET url, expected status code = 200, expected redirectUrlRegex = null
 			array('/', 301, '/home/'),
 			array('/home', 302, '/login/'),
 			array('/login'),
