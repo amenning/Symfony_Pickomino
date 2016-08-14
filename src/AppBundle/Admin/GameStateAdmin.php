@@ -4,13 +4,13 @@
 
 namespace AppBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class GameStateAdmin extends Admin
+class GameStateAdmin extends AbstractAdmin
 {
     protected $datagridValues = array(
 		'_sort_order' => 'ASC',
@@ -23,8 +23,8 @@ class GameStateAdmin extends Admin
 		    ->add('game')
 		;
 	}
-	
-	
+
+
 	protected function configureDatagridFilters(DatagridMapper $datagridMapper)
 	{
 		$datagridMapper
@@ -48,5 +48,5 @@ class GameStateAdmin extends Admin
 			->add('player_worms_totals')
 			->add('created_at', 'datetime', array('date_format' => 'yyyy-MM-dd HH:mm:ss'))
 		;
-	}		
+	}
 }
