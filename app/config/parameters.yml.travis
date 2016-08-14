@@ -2,7 +2,7 @@
 # Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
-    database_name: symfony_stocks
+    database_name: symfony_pickomino
     database_user: travis
     database_password: ~
     # You should uncomment this if you want use pdo_sqlite
