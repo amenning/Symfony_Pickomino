@@ -4,9 +4,9 @@ namespace AppBundle\Tests\Controller;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
-use AppBundle\Controller\MainController;
+use AppBundle\Controller\GameStateController;
 
-class MainControllerTest extends WebTestCase
+class GameStateControllerTest extends WebTestCase
 {
     public function createClientWithUser(
         $username = 'test456',
@@ -46,26 +46,44 @@ class MainControllerTest extends WebTestCase
         $em->flush();
     }
 
-
-    public function testIndexAction()
+    public function deleteGame($gameId)
     {
+        // Clean up database
+        $kernel = static::createKernel();
+        $kernel->boot();
+        $em = $kernel->getContainer()->get('doctrine.orm.entity_manager');
+        $newGameToDelete = $em->getRepository('AppBundle:Game')->findOneById($gameId);
+        $em->remove($newGameToDelete);
+        $em->flush();
+    }
+
+    public function testNewGameAction()
+	{
         $client = $this->createClientWithUser();
 
         $container = $client->getContainer();
         $user = $container->get('security.token_storage')->getToken()->getUser();
-
         $userId = $user->getId();
-        $firstname = $user->getFirstname();
-        $lastname = $user->getLastname();
 
-        $crawler = $client->request('GET', '/home');
+        $kernel = static::createKernel();
+        $kernel->boot();
+        $em = $kernel->getContainer()->get('doctrine.orm.entity_manager');
 
-        $this->assertEquals(
-            'AppBundle\Controller\MainController::indexAction',
-            $client->getRequest()->attributes->get('_controller')
-        );
-        $this->assertContains($firstname, $client->getResponse()->getContent());
+        $query = $em->createQuery('SELECT count(g.id) from AppBundle:Game g WHERE g.player = :player');
+        $query->setParameter('player', $userId);
+        $initialGameNumberCount = $query->getSingleScalarResult();
 
-        $this->deleteUser($user->getUsername());
-    }
+		$crawler = $client->request('POST', '/new_game', array(), array(), array(), json_encode(array('userID' => $userId)));
+		$this->assertEquals('AppBundle\Controller\GameStateController::newGameAction', $client->getRequest()->attributes->get('_controller'));
+        $this->assertEquals($initialGameNumberCount+1, $query->getSingleScalarResult());
+
+        $query = $em->createQuery('SELECT g.id from AppBundle:Game g WHERE g.player = :player ORDER BY g.id DESC');
+        $query->setParameter('player', $userId);
+        $newestGameId = $query->getSingleScalarResult();
+        $this->assertEquals($newestGameId, $client->getResponse()->getContent());
+
+		// Clean up database
+		$this->deleteGame($newestGameId);
+		$this->deleteUser($user->getUsername());
+	}
 }
