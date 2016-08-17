@@ -57,6 +57,17 @@ class GameStateControllerTest extends WebTestCase
         $em->flush();
     }
 
+    public function deleteGameState($gameStateId)
+    {
+        // Clean up database
+        $kernel = static::createKernel();
+        $kernel->boot();
+        $em = $kernel->getContainer()->get('doctrine.orm.entity_manager');
+        $newGameStateToDelete = $em->getRepository('AppBundle:GameState')->findOneById($gameStateId);
+        $em->remove($newGameStateToDelete);
+        $em->flush();
+    }
+
     public function testNewGameAction()
 	{
         $client = $this->createClientWithUser();
@@ -86,4 +97,57 @@ class GameStateControllerTest extends WebTestCase
 		$this->deleteGame($newestGameId);
 		$this->deleteUser($user->getUsername());
 	}
+
+    public function testSaveAndLoadGameAction()
+    {
+        $client = $this->createClientWithUser();
+
+        $container = $client->getContainer();
+        $user = $container->get('security.token_storage')->getToken()->getUser();
+        $userId = $user->getId();
+
+        $kernel = static::createKernel();
+        $kernel->boot();
+        $em = $kernel->getContainer()->get('doctrine.orm.entity_manager');
+
+        $query = $em->createQuery('SELECT count(g.id) from AppBundle:Game g WHERE g.player = :player');
+        $query->setParameter('player', $userId);
+
+        $crawler = $client->request('POST', '/new_game', array(), array(), array(), json_encode(array('userID' => $userId)));
+
+        $query = $em->createQuery('SELECT g.id from AppBundle:Game g WHERE g.player = :player ORDER BY g.id DESC');
+        $query->setParameter('player', $userId);
+        $newestGameId = $query->getSingleScalarResult();
+
+        $queryData = array(
+            "gameID" => $newestGameId,
+            "gameStatus" => "status",
+            "grillWorms" => "grillWorms",
+            "deadGrillWorms" => "deadGrillWorms",
+            "playerMessage" => "playerMessage",
+            "activeDice" => "activeDice",
+            "frozenDice" => "frozenDice",
+            "frozenDiceTotal" => "frozenDiceTotal",
+            "playerWorms" => "playerWorms",
+            "playerWormsTotals" => "playerWormsTotals",
+        );
+
+        $crawler = $client->request('POST', '/save_game_state', array(), array(), array(), json_encode($queryData));
+        $query = $em->createQuery('SELECT gs.id from AppBundle:GameState gs WHERE gs.game = :game ORDER BY gs.id DESC');
+        $query->setParameter('game', $newestGameId);
+        $newestGameStateId = $query->getSingleScalarResult();
+        $this->assertEquals($newestGameStateId, $client->getResponse()->getContent());
+
+        $crawler = $client->request('POST', '/load_game', array(), array(), array(), json_encode(array('userID' => $userId)));
+
+        $expectedGameStateArray = $queryData;
+        $expectedGameStateArray["gameStateID"] = $newestGameStateId;
+        $loadedGameStateArray = json_decode($client->getResponse()->getContent(), true);
+        $this->assertEquals($expectedGameStateArray, $loadedGameStateArray);
+
+        // Clean up database
+        $this->deleteGameState($newestGameStateId);
+        $this->deleteGame($newestGameId);
+        $this->deleteUser($user->getUsername());
+    }
 }
