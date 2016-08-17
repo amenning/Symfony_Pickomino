@@ -11,6 +11,7 @@ services:
   
 before_script:
   - npm install -g grunt-cli
+  - npm install -g bower
   - npm install
   - bower install
   - psql -c 'create database symfony_pickomino;' -U postgres
