@@ -10,6 +10,9 @@ services:
   - postgresql
   
 before_script:
+  - npm install -g grunt-cli
+  - npm install
+  - bower install
   - psql -c 'create database symfony_pickomino;' -U postgres
   - cp app/config/parameters.yml.travis app/config/parameters.yml
   # - composer require symfony/symfony:${SYMFONY_VERSION}
