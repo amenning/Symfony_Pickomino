@@ -61,7 +61,9 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
         "compile": [
-            "php app/console doctrine:schema:update --force"
+            "php app/console doctrine:schema:update --force",
+            "npm install",
+            "node_modules/bower/bin/bower install"
         ]
     },
     "config": {
