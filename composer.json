@@ -30,6 +30,7 @@
         "sonata-project/core-bundle": "^3.0",
         "sonata-project/admin-bundle": "^3.4",
         "sonata-project/cache-bundle": "^2.2"
+        "mouf/nodejs-installer": "~1.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
@@ -81,6 +82,14 @@
             	"database_password": "DATABASE_PASSWORD",
             	"monolog_action_level": "LOG_LEVEL"
         	}
+        },
+        "mouf": {
+            "nodejs": {
+                "version": "~0.12",
+                "targetDir": "vendor/nodejs/nodejs",
+                "forceLocal": false,
+                "includeBinInPath": true
+            }
         }
     }
 }
