@@ -1,4 +1,4 @@
-Pickomino 
+Pickomino
 ======================
 
 A Symfony project created on June 21, 2016.
@@ -9,8 +9,8 @@ This project is an implementation of Pickomino dice game using Symfony and Angul
 
 ```bash
 # Create parameters.yml file and setup database parameters
-composer install
-npm install
+composer install # this will install node as well
+npm install # this will install bower
 bower install
 
 # For almost all OS other than Windows
