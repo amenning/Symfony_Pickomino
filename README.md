@@ -10,6 +10,7 @@ This project is an implementation of Pickomino dice game using Symfony and Angul
 ```bash
 # Create parameters.yml file and setup database parameters
 composer install
+npm install
 bower install
 
 # For almost all OS other than Windows

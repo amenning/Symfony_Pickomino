@@ -32,7 +32,10 @@
 /web/uploads/
 
 # Assets managed by Bower
-#/web/assets/bower_components/
+/web/assets/bower_components/
+
+# Assets managed by Node
+/node_modules/
 
 # PHPUnit
 /app/phpunit.xml
