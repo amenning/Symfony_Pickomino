@@ -40,14 +40,19 @@ describe("SetWormImage service", function () {
 
 });
 */
-//describe("Unit Testing Examples", function() {
+describe("Unit Testing Examples", function() {
+  var SetWormImage;
+  
+  //beforeEach(module("pickominoGame"));
+  beforeEach(angular.mock.module('pickominoGame'));
 
-//  beforeEach(angular.mock.module('pickominoGame'));
-/*
+  beforeEach(inject(function (_SetWormImage_) {
+	  SetWormImage = _SetWormImage_;
+  }));
+  
   it('should have a working SetWormImage service', inject(['SetWormImage',
     function(SetWormImage) {
-      expect(SetWormImage.imagify).not.to.equal(null);
+      expect(SetWormImage.imagify).not.toBe(null);
   	}
   ]));
-*/
-//});
+});
