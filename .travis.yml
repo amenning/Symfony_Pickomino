@@ -13,7 +13,7 @@ before_script:
   - npm install -g grunt-cli
   - npm install -g bower
   - npm install -g jasmine
-  - npm install
+  - npm install -g karma
   - bower install
   - psql -c 'create database symfony_pickomino;' -U postgres
   - cp app/config/parameters.yml.travis app/config/parameters.yml
@@ -23,4 +23,4 @@ before_script:
 
 script: 
   - phpunit -c app/
-  - jasmine
+  - karma start --single-run
