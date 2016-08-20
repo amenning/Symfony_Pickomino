@@ -24,4 +24,4 @@ before_script:
 
 script: 
   - phpunit -c app/
-  - karma start --single-run
+  - karma start karma.conf.js --single-run
