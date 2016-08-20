@@ -55,4 +55,13 @@ describe("Unit Testing Examples", function() {
       expect(SetWormImage.imagify).not.toBe(null);
   	}
   ]));
+  
+  it('should return a filename', inject(['SetWormImage',
+   function(SetWormImage) { 
+	 var response;
+     response = SetWormImage.imagify(21); 
+	 expect(response).not.toBe(null);
+	 expect(response).toEqual("web/bundles/app/img/OneWormTile.png");
+   }
+  ]));
 });
