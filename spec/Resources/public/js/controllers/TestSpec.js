@@ -40,13 +40,14 @@ describe("SetWormImage service", function () {
 
 });
 */
-describe("Unit Testing Examples", function() {
+//describe("Unit Testing Examples", function() {
 
-  beforeEach(angular.mock.module('pickominoGame'));
-
+//  beforeEach(angular.mock.module('pickominoGame'));
+/*
   it('should have a working SetWormImage service', inject(['SetWormImage',
     function(SetWormImage) {
       expect(SetWormImage.imagify).not.to.equal(null);
   	}
   ]));
-});
+*/
+//});
