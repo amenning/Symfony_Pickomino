@@ -18,7 +18,7 @@ describe("SetDiceImageServiceTests", function() {
   
   it('should have a working SetDiceImage service', inject(['SetDiceImage',
     function(SetDiceImage) {
-      expect(SetDiceImage.imagify).not.toBe(null);
+      expect(SetDiceImage).toHaveMethod("imagify");
   	}
   ]));
   

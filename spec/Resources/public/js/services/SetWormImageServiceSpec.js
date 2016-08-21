@@ -18,7 +18,7 @@ describe("SetWormImageServiceTests", function() {
   
   it('should have a working SetWormImage service', inject(['SetWormImage',
     function(SetWormImage) {
-      expect(SetWormImage.imagify).not.toBe(null);
+      expect(SetWormImage).toHaveMethod("imagify");
   	}
   ]));
   
