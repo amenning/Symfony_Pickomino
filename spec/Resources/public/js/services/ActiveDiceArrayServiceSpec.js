@@ -1,11 +1,3 @@
-
-//Dataprovider Function 
-function using(name, args, func){
-	for (var i = 0, count = args[0].length; i < count; i++) {
-		func.apply(this, [args[0][i], args[1][i]]);
-	}
-};
-
 function newDiceToAdd(value){
 	return {
         value: value,
