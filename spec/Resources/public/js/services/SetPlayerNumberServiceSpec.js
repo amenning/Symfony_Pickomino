@@ -26,7 +26,7 @@ describe("PlayerNumberServiceTests", function() {
    	}
   ]));
   
-  it('should call setStatus four times', inject(['PlayerNumber', 'GameAction', 'GameState', function(PlayerNumber, GameAction, GameState) {
+  it('should call GameAction.setStatus and GameState.save four times', inject(['PlayerNumber', 'GameAction', 'GameState', function(PlayerNumber, GameAction, GameState) {
       spyOn(GameAction, 'setStatus').and.stub();
       spyOn(GameState, 'save').and.stub();
   
