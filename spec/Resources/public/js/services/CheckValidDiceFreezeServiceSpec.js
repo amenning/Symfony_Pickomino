@@ -25,14 +25,12 @@ describe("CheckValidDiceFreezeFilterServiceTests", function() {
 	  expect(CheckValidDiceFreeze).toHaveMethod("validate");
    	}
   ]));
-  /*
+  
   it('should count the number of dice with a given value when count() is called', inject(['CheckValidDiceFreeze', 'FrozenDiceArray', '$filter', function(CheckValidDiceFreeze, FrozenDiceArray, $filter) {
-	  // The FrozenDiceArray initializes with eight dice of face 6
-	  diceCountWithFace6 = CheckValidDiceFreeze.count(6);
-	  expect(diceCountWithFace6).toEqual(8);
+	  // Need to seed FrozenDiceArray with dice but no worm
 	  
-	  diceCountWithFace1 = CheckValidDiceFreeze.count(1);
-	  expect(diceCountWithFace1).toEqual(0);
+	  // Need to seed FrozenDiceArray with dice and with worm
+	  
   	}
-  ]));*/
+  ]));
 });
