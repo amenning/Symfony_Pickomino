@@ -6,6 +6,13 @@ function using(name, args, func){
   }
 };
 
+function newFrozenDiceToAdd(value){
+	return {
+        value: value,
+        image: "test" + value + ".png"
+	};
+};
+
 describe("CheckValidDiceFreezeFilterServiceTests", function() {
   var CheckValidDiceFreeze;
   var $filter;
@@ -27,8 +34,13 @@ describe("CheckValidDiceFreezeFilterServiceTests", function() {
   ]));
   
   it('should count the number of dice with a given value when count() is called', inject(['CheckValidDiceFreeze', 'FrozenDiceArray', '$filter', function(CheckValidDiceFreeze, FrozenDiceArray, $filter) {
-	  // Need to seed FrozenDiceArray with dice but no worm
+	  // Need to seed FrozenDiceArray with dice that contains a worm
+	  for (var i = 1; i <= 6; i++) {
+	  	var diceToAdd = newFrozenDiceToAdd(i);
+		FrozenDiceArray.add(diceToAdd);
+	  }
 	  
+	  expect(CheckValidDiceFreeze.validate(1)).toEqual(false);
 	  // Need to seed FrozenDiceArray with dice and with worm
 	  
   	}
