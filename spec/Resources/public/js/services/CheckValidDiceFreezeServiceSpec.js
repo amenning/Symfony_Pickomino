@@ -1,8 +1,8 @@
 
 // Dataprovider Function for test filename with certain value
 function using(name, args, func){
-  for (var i = 0, count = args[0].length; i < count; i++) {
-    func.apply(this, [args[0][i], args[1]]);
+  for (var i = 0, count = args.length; i < count; i++) {
+    func.apply(this, [args[i]]);
   }
 };
 
@@ -33,7 +33,7 @@ describe("CheckValidDiceFreezeFilterServiceTests", function() {
    	}
   ]));
   
-  it('should count the number of dice with a given value when count() is called', inject(['CheckValidDiceFreeze', 'FrozenDiceArray', '$filter', function(CheckValidDiceFreeze, FrozenDiceArray, $filter) {
+  it('should validate that a dice number cannot be taken if it is present in FrozenDiceArray', inject(['CheckValidDiceFreeze', 'FrozenDiceArray', '$filter', function(CheckValidDiceFreeze, FrozenDiceArray, $filter) {
 	  // Need to seed FrozenDiceArray with dice that contains a worm
 	  for (var i = 1; i <= 6; i++) {
 	  	var diceToAdd = newFrozenDiceToAdd(i);
@@ -41,8 +41,45 @@ describe("CheckValidDiceFreezeFilterServiceTests", function() {
 	  }
 	  
 	  expect(CheckValidDiceFreeze.validate(1)).toEqual(false);
-	  // Need to seed FrozenDiceArray with dice and with worm
-	  
   	}
   ]));
+  
+  it('should validate that a dice number can be taken if it isn\'t present in FrozenDiceArray', inject(['CheckValidDiceFreeze', 'FrozenDiceArray', '$filter', function(CheckValidDiceFreeze, FrozenDiceArray, $filter) {
+	  // Need to seed FrozenDiceArray with dice that contains a worm
+	  for (var i = 1; i <= 5; i++) {
+	  	var diceToAdd = newFrozenDiceToAdd(6);
+		FrozenDiceArray.add(diceToAdd);
+	  }
+	  
+	  expect(CheckValidDiceFreeze.validate(1)).toEqual(true);
+  	}
+  ]));  
+  
+	using("different values", [1, 2, 3, 4, 5, 6], function(value){
+	  it('should validate that a dice with value ' + value + ' cannot be taken if ' + value + ' is already present in FrozenDiceArray', inject(['CheckValidDiceFreeze', 'FrozenDiceArray', '$filter', function(CheckValidDiceFreeze, FrozenDiceArray, $filter) {
+		  // Need to seed FrozenDiceArray with dice that contains a worm
+		  for (var i = 1; i <= 6; i++) {
+		  	var diceToAdd = newFrozenDiceToAdd(i);
+			FrozenDiceArray.add(diceToAdd);
+		  }
+		  
+		  expect(CheckValidDiceFreeze.validate(value)).toEqual(false);
+	  	}
+	  ]));
+	});
+	
+	using("different values", [1, 2, 3, 4, 5, 6], function(value){
+		  it('should validate that a dice with value ' + value + ' can be taken if ' + value + ' is not already present in FrozenDiceArray', inject(['CheckValidDiceFreeze', 'FrozenDiceArray', '$filter', function(CheckValidDiceFreeze, FrozenDiceArray, $filter) {
+			  // Need to seed FrozenDiceArray with dice that contains a worm
+			  for (var i = 1; i <= 6; i++) {
+			  	if ( i != value ) {
+			  		var diceToAdd = newFrozenDiceToAdd(i);
+			  		FrozenDiceArray.add(diceToAdd);
+			  	}
+			  }
+			  
+			  expect(CheckValidDiceFreeze.validate(value)).toEqual(true);
+		  	}
+		  ]));
+		});	
 });
