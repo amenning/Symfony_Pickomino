@@ -57,7 +57,7 @@ describe("CheckValidDiceFreezeFilterServiceTests", function() {
   
 	using("different values", [1, 2, 3, 4, 5, 6], function(value){
 	  it('should validate that a dice with value ' + value + ' cannot be taken if ' + value + ' is already present in FrozenDiceArray', inject(['CheckValidDiceFreeze', 'FrozenDiceArray', '$filter', function(CheckValidDiceFreeze, FrozenDiceArray, $filter) {
-		  // Need to seed FrozenDiceArray with dice that contains a worm
+		  // Seed FrozenDiceArray with all numbers, including the value we wish to freeze
 		  for (var i = 1; i <= 6; i++) {
 		  	var diceToAdd = newFrozenDiceToAdd(i);
 			FrozenDiceArray.add(diceToAdd);
@@ -70,7 +70,7 @@ describe("CheckValidDiceFreezeFilterServiceTests", function() {
 	
 	using("different values", [1, 2, 3, 4, 5, 6], function(value){
 		  it('should validate that a dice with value ' + value + ' can be taken if ' + value + ' is not already present in FrozenDiceArray', inject(['CheckValidDiceFreeze', 'FrozenDiceArray', '$filter', function(CheckValidDiceFreeze, FrozenDiceArray, $filter) {
-			  // Need to seed FrozenDiceArray with dice that contains a worm
+			  // Seed FrozenDiceArray with all numbers but the value we wish to freeze
 			  for (var i = 1; i <= 6; i++) {
 			  	if ( i != value ) {
 			  		var diceToAdd = newFrozenDiceToAdd(i);
