@@ -56,11 +56,11 @@ describe("BunkPenaltyServiceTests", function() {
     ) { 
 	  BunkPenalty.penalize();
 	  
-	  expect(RandomDice.resetDice).toHaveBeenCalled();
-	  expect(GameAction.setStatus).toHaveBeenCalled();
-	  expect(GameAction.switchPlayer).toHaveBeenCalled();
-	  expect(PlayerNotification.setMessage).toHaveBeenCalled();
-	  expect(GameState.save).toHaveBeenCalled();
+	  expect(RandomDice.resetDice.calls.count()).toEqual(1);
+	  expect(GameAction.setStatus.calls.count()).toEqual(4);
+	  expect(GameAction.switchPlayer.calls.count()).toEqual(1);
+	  expect(PlayerNotification.setMessage.calls.count()).toEqual(1);
+	  expect(GameState.save.calls.count()).toEqual(1);
    	}
   ])); 
 });
