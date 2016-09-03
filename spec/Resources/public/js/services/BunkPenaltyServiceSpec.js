@@ -40,6 +40,7 @@ describe("BunkPenaltyServiceTests", function() {
 	  spyOn(GrillWormsArray, 'addWorm').and.stub();
 	  spyOn(GrillWormsArray, 'removeBunkWorm').and.stub();
 	  spyOn(GameAction, 'setStatus').and.stub();
+	  spyOn(GameAction, 'switchPlayer').and.stub();
 	  spyOn(PlayerNotification, 'setMessage').and.stub();
 	  spyOn(GameState, 'save').and.stub();
   }));
@@ -56,6 +57,10 @@ describe("BunkPenaltyServiceTests", function() {
 	  BunkPenalty.penalize();
 	  
 	  expect(RandomDice.resetDice).toHaveBeenCalled();
+	  expect(GameAction.setStatus).toHaveBeenCalled();
+	  expect(GameAction.switchPlayer).toHaveBeenCalled();
+	  expect(PlayerNotification.setMessage).toHaveBeenCalled();
+	  expect(GameState.save).toHaveBeenCalled();
    	}
   ])); 
 });
