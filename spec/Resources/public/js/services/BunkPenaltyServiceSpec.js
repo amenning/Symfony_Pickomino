@@ -35,6 +35,8 @@ describe("BunkPenaltyServiceTests", function() {
 	  PlayerNotification = _PlayerNotification_;
 	  GameState = _GameState_;
 	  
+	  GameAction.setStatus('activePlayer', 0);
+	  
 	  spyOn(RandomDice, 'resetDice').and.stub();
 	  spyOn(PlayerWormsArray, 'removeBunkWorm').and.stub();
 	  spyOn(GrillWormsArray, 'addWorm').and.stub();
@@ -53,8 +55,12 @@ describe("BunkPenaltyServiceTests", function() {
   
   it('should call RandomDice.resetDice', inject(['BunkPenalty', 'PlayerWormsArray', 'GrillWormsArray', 'GameAction', 'RandomDice', 'PlayerNotification', 'GameState', 
                                                  function(BunkPenalty, PlayerWormsArray, GrillWormsArray, GameAction, RandomDice, PlayerNotification, GameState
-    ) { 
+    ) {	  
 	  BunkPenalty.penalize();
+	  
+	  expect(PlayerWormsArray.removeBunkWorm.calls.count()).toEqual(0);
+	  expect(GrillWormsArray.addWorm.calls.count()).toEqual(0);
+	  expect(GrillWormsArray.removeBunkWorm.calls.count()).toEqual(0);
 	  
 	  expect(RandomDice.resetDice.calls.count()).toEqual(1);
 	  expect(RandomDice.resetDice.calls.argsFor(0)).toEqual([]);
