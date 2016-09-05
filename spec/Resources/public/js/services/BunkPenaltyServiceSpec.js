@@ -57,10 +57,23 @@ describe("BunkPenaltyServiceTests", function() {
 	  BunkPenalty.penalize();
 	  
 	  expect(RandomDice.resetDice.calls.count()).toEqual(1);
+	  expect(RandomDice.resetDice.calls.argsFor(0)).toEqual([]);
+	  
 	  expect(GameAction.setStatus.calls.count()).toEqual(4);
+	  expect(GameAction.setStatus.calls.argsFor(0)).toEqual(['roll', true]);
+	  expect(GameAction.setStatus.calls.argsFor(1)).toEqual(['takeWorm', false]);
+	  expect(GameAction.setStatus.calls.argsFor(2)).toEqual(['freezeDice', false]);
+	  expect(GameAction.setStatus.calls.argsFor(3)).toEqual(['bunk', false]);
+	  
 	  expect(GameAction.switchPlayer.calls.count()).toEqual(1);
+	  expect(GameAction.switchPlayer.calls.argsFor(0)).toEqual([]);
+	  
 	  expect(PlayerNotification.setMessage.calls.count()).toEqual(1);
+	  expect(PlayerNotification.setMessage.calls.argsFor(0)).toEqual(['You can now reroll the dice.']);
+	  
+	  
 	  expect(GameState.save.calls.count()).toEqual(1);
+	  expect(GameState.save.calls.argsFor(0)).toEqual([]);
    	}
   ])); 
 });
