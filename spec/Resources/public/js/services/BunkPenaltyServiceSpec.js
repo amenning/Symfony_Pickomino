@@ -81,5 +81,37 @@ describe("BunkPenaltyServiceTests", function() {
 	  expect(GameState.save.calls.count()).toEqual(1);
 	  expect(GameState.save.calls.argsFor(0)).toEqual([]);
    	}
-  ])); 
+  ]));
+  
+  it('should return a worm or remove grill worm if player has not worm tiles', inject(['BunkPenalty', 'PlayerWormsArray', 'GrillWormsArray', 'GameAction', 'RandomDice', 'PlayerNotification', 'GameState', 
+                                                                                           function(BunkPenalty, PlayerWormsArray, GrillWormsArray, GameAction, RandomDice, PlayerNotification, GameState
+  ) {	  
+	  // Seed playerwormsarray here
+	  
+	  BunkPenalty.penalize();
+	  
+	  expect(PlayerWormsArray.removeBunkWorm.calls.count()).toEqual(0);
+	  expect(GrillWormsArray.addWorm.calls.count()).toEqual(0);
+	  expect(GrillWormsArray.removeBunkWorm.calls.count()).toEqual(0);
+	  
+	  expect(RandomDice.resetDice.calls.count()).toEqual(1);
+	  expect(RandomDice.resetDice.calls.argsFor(0)).toEqual([]);
+	  
+	  expect(GameAction.setStatus.calls.count()).toEqual(4);
+	  expect(GameAction.setStatus.calls.argsFor(0)).toEqual(['roll', true]);
+	  expect(GameAction.setStatus.calls.argsFor(1)).toEqual(['takeWorm', false]);
+	  expect(GameAction.setStatus.calls.argsFor(2)).toEqual(['freezeDice', false]);
+	  expect(GameAction.setStatus.calls.argsFor(3)).toEqual(['bunk', false]);
+	  
+	  expect(GameAction.switchPlayer.calls.count()).toEqual(1);
+	  expect(GameAction.switchPlayer.calls.argsFor(0)).toEqual([]);
+	  
+	  expect(PlayerNotification.setMessage.calls.count()).toEqual(1);
+	  expect(PlayerNotification.setMessage.calls.argsFor(0)).toEqual(['You can now reroll the dice.']);
+	  
+	  
+	  expect(GameState.save.calls.count()).toEqual(1);
+	  expect(GameState.save.calls.argsFor(0)).toEqual([]);
+ 	}
+]));
 });
