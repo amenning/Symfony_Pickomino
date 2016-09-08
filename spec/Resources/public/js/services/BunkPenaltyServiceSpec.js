@@ -83,16 +83,21 @@ describe("BunkPenaltyServiceTests", function() {
    	}
   ]));
   
-  it('should return a worm or remove grill worm if player has not worm tiles', inject(['BunkPenalty', 'PlayerWormsArray', 'GrillWormsArray', 'GameAction', 'RandomDice', 'PlayerNotification', 'GameState', 
+  it('should return a worm or remove grill worm if player has at least one worm tile', inject(['BunkPenalty', 'PlayerWormsArray', 'GrillWormsArray', 'GameAction', 'RandomDice', 'PlayerNotification', 'GameState', 
                                                                                            function(BunkPenalty, PlayerWormsArray, GrillWormsArray, GameAction, RandomDice, PlayerNotification, GameState
   ) {	  
-	  // Seed playerwormsarray here
+	  // Seed playerwormsarray here with one tile
+	  wormValue = 25;
+	  PlayerWormsArray.addWorm(wormValue);
 	  
 	  BunkPenalty.penalize();
 	  
-	  expect(PlayerWormsArray.removeBunkWorm.calls.count()).toEqual(0);
-	  expect(GrillWormsArray.addWorm.calls.count()).toEqual(0);
-	  expect(GrillWormsArray.removeBunkWorm.calls.count()).toEqual(0);
+	  expect(PlayerWormsArray.removeBunkWorm.calls.count()).toEqual(1);
+	  expect(PlayerWormsArray.removeBunkWorm.calls.argsFor(0)).toEqual([]);
+	  expect(GrillWormsArray.addWorm.calls.count()).toEqual(1);
+	  expect(GrillWormsArray.addWorm.calls.argsFor(0)).toEqual([wormValue]);
+	  expect(GrillWormsArray.removeBunkWorm.calls.count()).toEqual(1);
+	  expect(GrillWormsArray.removeBunkWorm.calls.argsFor(0)).toEqual([wormValue]);
 	  
 	  expect(RandomDice.resetDice.calls.count()).toEqual(1);
 	  expect(RandomDice.resetDice.calls.argsFor(0)).toEqual([]);
