@@ -41,4 +41,11 @@ describe("CheckValidWormStealServiceTests", function() {
 	  expect(CheckValidWormSteal).toHaveMethod("validate");
    	}
   ]));
+  
+  it('should have return false if attempt to steal with no frozen dice', inject(['CheckValidWormSteal', function(CheckValidWormSteal) { 
+	  var result = CheckValidWormSteal.validate(30);
+	  
+	  expect(result).toBe(false);
+   	}
+  ]));
 });
