@@ -8,7 +8,7 @@ function using(name, args, func){
 
 describe("CheckValidWormStealServiceTests", function() {
   var CheckValidWormSteal;
-  var PlayerWormsArray;
+  var FrozenDiceArray;
   var GrillWormsArray;
   var GameAction;
   var RandomDice;
@@ -20,7 +20,7 @@ describe("CheckValidWormStealServiceTests", function() {
 
   beforeEach(inject(function (
 		  _CheckValidWormSteal_, 
-		  _PlayerWormsArray_, 
+		  _FrozenDiceArray_, 
 		  _GrillWormsArray_,
 		  _GameAction_,
 		  _RandomDice_,
@@ -28,7 +28,7 @@ describe("CheckValidWormStealServiceTests", function() {
 		  _GameState_
   ) {
 	  CheckValidWormSteal = _CheckValidWormSteal_;
-	  PlayerWormsArray = _PlayerWormsArray_;
+	  FrozenDiceArray = _FrozenDiceArray_;
 	  GrillWormsArray = _GrillWormsArray_;
 	  GameAction = _GameAction_;
 	  RandomDice = _RandomDice_;
@@ -43,6 +43,14 @@ describe("CheckValidWormStealServiceTests", function() {
   ]));
   
   it('should have return false if attempt to steal with no frozen dice', inject(['CheckValidWormSteal', function(CheckValidWormSteal) { 
+	  var result = CheckValidWormSteal.validate(30);
+	  
+	  expect(result).toBe(false);
+   	}
+  ]));
+  
+  it('should have return false if attempt to steal with frozen dice but no worm', inject(['CheckValidWormSteal', 'FrozenDiceArray', function(CheckValidWormSteal, FrozenDiceArray) { 
+	  FrozenDiceArray.frozenStatus.sum = 30;
 	  var result = CheckValidWormSteal.validate(30);
 	  
 	  expect(result).toBe(false);
