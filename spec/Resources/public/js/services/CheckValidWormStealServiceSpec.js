@@ -56,4 +56,12 @@ describe("CheckValidWormStealServiceTests", function() {
 	  expect(result).toBe(false);
    	}
   ]));
+  
+  it('should have return false if attempt to steal with not enough dice but with worm', inject(['CheckValidWormSteal', 'FrozenDiceArray', function(CheckValidWormSteal, FrozenDiceArray) { 
+	  FrozenDiceArray.add({value: 6});
+	  var result = CheckValidWormSteal.validate(30);
+	  
+	  expect(result).toBe(false);
+   	}
+  ]));
 });
