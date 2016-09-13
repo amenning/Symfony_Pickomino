@@ -9,31 +9,16 @@ function using(name, args, func){
 describe("CheckValidWormStealServiceTests", function() {
   var CheckValidWormSteal;
   var FrozenDiceArray;
-  var GrillWormsArray;
-  var GameAction;
-  var RandomDice;
-  var PlayerNotification;
-  var GameState;
     
   //beforeEach(module("pickominoGame"));
   beforeEach(angular.mock.module('pickominoGame'));
 
   beforeEach(inject(function (
 		  _CheckValidWormSteal_, 
-		  _FrozenDiceArray_, 
-		  _GrillWormsArray_,
-		  _GameAction_,
-		  _RandomDice_,
-		  _PlayerNotification_,
-		  _GameState_
+		  _FrozenDiceArray_ 
   ) {
 	  CheckValidWormSteal = _CheckValidWormSteal_;
 	  FrozenDiceArray = _FrozenDiceArray_;
-	  GrillWormsArray = _GrillWormsArray_;
-	  GameAction = _GameAction_;
-	  RandomDice = _RandomDice_;
-	  PlayerNotification = _PlayerNotification_;
-	  GameState = _GameState_;
   }));
   
   
