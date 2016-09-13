@@ -64,4 +64,13 @@ describe("CheckValidWormStealServiceTests", function() {
 	  expect(result).toBe(false);
    	}
   ]));
+  
+  it('should have return true if attempt to steal with enough dice and with worm', inject(['CheckValidWormSteal', 'FrozenDiceArray', function(CheckValidWormSteal, FrozenDiceArray) { 
+	  FrozenDiceArray.add({value: 6});
+	  FrozenDiceArray.frozenStatus.sum = 30;
+	  var result = CheckValidWormSteal.validate(30);
+	  
+	  expect(result).toBe(true);
+   	}
+  ]));
 });
