@@ -34,7 +34,7 @@ describe("CheckValidWormStealServiceTests", function() {
    	}
   ]));
   
-  it('should return false if attempt to steal with enough frozen dice but no worm', inject(['CheckValidWormSteal', 'FrozenDiceArray', function(CheckValidWormSteal, FrozenDiceArray) { 
+  it('should return false if attempt to steal with high enough frozen dice total but no worm', inject(['CheckValidWormSteal', 'FrozenDiceArray', function(CheckValidWormSteal, FrozenDiceArray) { 
 	  FrozenDiceArray.frozenStatus.sum = 30;
 	  var result = CheckValidWormSteal.validate(30);
 	  
@@ -42,7 +42,7 @@ describe("CheckValidWormStealServiceTests", function() {
    	}
   ]));
   
-  it('should return false if attempt to steal with not enough dice but with worm', inject(['CheckValidWormSteal', 'FrozenDiceArray', function(CheckValidWormSteal, FrozenDiceArray) { 
+  it('should return false if attempt to steal with not high enough frozen dice total but with worm', inject(['CheckValidWormSteal', 'FrozenDiceArray', function(CheckValidWormSteal, FrozenDiceArray) { 
 	  FrozenDiceArray.add({value: 6});
 	  var result = CheckValidWormSteal.validate(30);
 	  
@@ -50,7 +50,7 @@ describe("CheckValidWormStealServiceTests", function() {
    	}
   ]));
   
-  it('should return true if attempt to steal with enough dice and with worm', inject(['CheckValidWormSteal', 'FrozenDiceArray', function(CheckValidWormSteal, FrozenDiceArray) { 
+  it('should return true if attempt to steal with high enough frozen dice total and with worm', inject(['CheckValidWormSteal', 'FrozenDiceArray', function(CheckValidWormSteal, FrozenDiceArray) { 
 	  FrozenDiceArray.add({value: 6});
 	  FrozenDiceArray.frozenStatus.sum = 30;
 	  var result = CheckValidWormSteal.validate(30);
