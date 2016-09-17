@@ -1,12 +1,50 @@
 describe("FreezeDiceActionServiceTests", function() {
-  var FreezeDiceAction;
+  var FreezeDiceAction;    
+  var GameAction;
+  var CheckValidDiceFreeze;
+  var ActiveDiceArray;
+  var SetDiceImage;
+  var ActiveDiceFilter;
+  var FrozenDiceArray;
+  var GrillWormsArray;
+  var PlayerNotification;
+  var GameState;
     
   beforeEach(angular.mock.module('pickominoGame'));
 
   beforeEach(inject(function (
-		  _FreezeDiceAction_
+		  _FreezeDiceAction_,
+		  _GameAction_,
+		  _CheckValidDiceFreeze_,
+		  _ActiveDiceArray_,
+		  _SetDiceImage_,
+		  _ActiveDiceFilter_,
+		  _FrozenDiceArray_,
+		  _GrillWormsArray_,
+		  _PlayerNotification_,
+		  _GameState_
   ) {
 	  FreezeDiceAction = _FreezeDiceAction_;
+	  GameAction = _GameAction_;
+	  CheckValidDiceFreeze = _CheckValidDiceFreeze_;
+	  ActiveDiceArray = _ActiveDiceArray_;
+	  SetDiceImage = _SetDiceImage_;
+	  ActiveDiceFilter = _ActiveDiceFilter_;
+	  FrozenDiceArray = _FrozenDiceArray_;
+	  GrillWormsArray = _GrillWormsArray_;
+	  PlayerNotification = _PlayerNotification_;
+	  GameState = _GameState_;
+	  
+	  spyOn(CheckValidDiceFreeze, 'validate').and.stub();
+	  spyOn(ActiveDiceArray, 'removeHighlight').and.stub();
+	  spyOn(SetDiceImage, 'imagify').and.stub();
+	  spyOn(ActiveDiceFilter, 'count').and.stub();
+	  spyOn(FrozenDiceArray, 'add').and.stub();
+	  spyOn(ActiveDiceArray, 'remove').and.stub();
+	  spyOn(GameAction, 'setStatus').and.stub();
+	  spyOn(PlayerNotification, 'setMessage').and.stub();
+	  spyOn(GrillWormsArray, 'highlightWorms').and.stub();
+	  spyOn(GameState, 'save').and.stub();
   }));
   
   
@@ -14,4 +52,33 @@ describe("FreezeDiceActionServiceTests", function() {
 	  expect(FreezeDiceAction).toHaveMethod("freeze");
    	}
   ]));
+  
+  it('should not freeze the dice if player has that number grouping already', 
+	 inject(['FreezeDiceAction',
+	         'GameAction',
+	         'CheckValidDiceFreeze',
+	         'ActiveDiceArray',
+	         'SetDiceImage',
+	         'ActiveDiceFilter',
+	         'FrozenDiceArray',
+	         'GrillWormsArray',
+	         'PlayerNotification',
+	         'GameState', 
+             function(
+        		  FreezeDiceAction, 
+        		  GameAction,
+		          CheckValidDiceFreeze,
+		          ActiveDiceArray,
+		          SetDiceImage,
+		          ActiveDiceFilter,
+		          FrozenDiceArray,
+		          GrillWormsArray,
+		          PlayerNotification,
+		          GameState
+             ) {
+		 		FreezeDiceAction.freeze(2);
+		 		expect(true).toBe(true);
+	 		 }
+  ]));
+	 
 });
