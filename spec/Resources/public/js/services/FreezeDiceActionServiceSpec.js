@@ -41,7 +41,6 @@ describe("FreezeDiceActionServiceTests", function() {
 	  spyOn(ActiveDiceFilter, 'count').and.stub();
 	  spyOn(FrozenDiceArray, 'add').and.stub();
 	  spyOn(ActiveDiceArray, 'remove').and.stub();
-	  spyOn(GameAction, 'setStatus').and.stub();
 	  spyOn(PlayerNotification, 'setMessage').and.stub();
 	  spyOn(GrillWormsArray, 'highlightWorms').and.stub();
 	  spyOn(GameState, 'save').and.stub();
@@ -53,7 +52,7 @@ describe("FreezeDiceActionServiceTests", function() {
    	}
   ]));
   
-  it('should not freeze the dice if player has that number grouping already', 
+  it('should not freeze the dice if player has already frozen a dice grouping this turn', 
 	 inject(['FreezeDiceAction',
 	         'GameAction',
 	         'CheckValidDiceFreeze',
@@ -76,8 +75,12 @@ describe("FreezeDiceActionServiceTests", function() {
 		          PlayerNotification,
 		          GameState
              ) {
+		 		GameAction.setStatus('freezeDice', false);
+		 		
+		 		spyOn(GameAction, 'setStatus').and.stub();
+		 		
 		 		FreezeDiceAction.freeze(2);
-		 		expect(true).toBe(true);
+		 		expect(CheckValidDiceFreeze.validate.calls.count()).toEqual(0);
 	 		 }
   ]));
 	 
