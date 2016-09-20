@@ -35,11 +35,9 @@ describe("FreezeDiceActionServiceTests", function() {
 	  PlayerNotification = _PlayerNotification_;
 	  GameState = _GameState_;
 	  
-	  spyOn(CheckValidDiceFreeze, 'validate').and.stub();
 	  spyOn(ActiveDiceArray, 'removeHighlight').and.stub();
 	  spyOn(SetDiceImage, 'imagify').and.stub();
 	  spyOn(ActiveDiceFilter, 'count').and.stub();
-	  spyOn(FrozenDiceArray, 'add').and.stub();
 	  spyOn(ActiveDiceArray, 'remove').and.stub();
 	  spyOn(PlayerNotification, 'setMessage').and.stub();
 	  spyOn(GrillWormsArray, 'highlightWorms').and.stub();
@@ -76,11 +74,44 @@ describe("FreezeDiceActionServiceTests", function() {
 		          GameState
              ) {
 		 		GameAction.setStatus('freezeDice', false);
-		 		
-		 		spyOn(GameAction, 'setStatus').and.stub();
-		 		
+		 		spyOn(CheckValidDiceFreeze, 'validate').and.stub();
+		 				 		
 		 		FreezeDiceAction.freeze(2);
 		 		expect(CheckValidDiceFreeze.validate.calls.count()).toEqual(0);
+	 		 }
+  ]));
+  
+  it('should not freeze the dice if player a player already has that dice value frozen', 
+	 inject(['FreezeDiceAction',
+	         'GameAction',
+	         'CheckValidDiceFreeze',
+	         'ActiveDiceArray',
+	         'SetDiceImage',
+	         'ActiveDiceFilter',
+	         'FrozenDiceArray',
+	         'GrillWormsArray',
+	         'PlayerNotification',
+	         'GameState', 
+             function(
+        		  FreezeDiceAction, 
+        		  GameAction,
+		          CheckValidDiceFreeze,
+		          ActiveDiceArray,
+		          SetDiceImage,
+		          ActiveDiceFilter,
+		          FrozenDiceArray,
+		          GrillWormsArray,
+		          PlayerNotification,
+		          GameState
+             ) {
+		 		GameAction.setStatus('freezeDice', true);
+		 		
+		 		spyOn(CheckValidDiceFreeze, 'validate').and.stub();
+		 		
+		 		FreezeDiceAction.freeze(2);
+		 		expect(CheckValidDiceFreeze.validate.calls.count()).toEqual(1);
+		 		expect(PlayerNotification.setMessage.calls.count()).toEqual(1);
+		 		expect(PlayerNotification.setMessage.calls.argsFor(0)).toEqual(['You already froze that number! Please pick a different number.']);
 	 		 }
   ]));
 	 
