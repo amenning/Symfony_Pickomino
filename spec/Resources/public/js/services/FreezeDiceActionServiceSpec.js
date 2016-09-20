@@ -78,6 +78,8 @@ describe("FreezeDiceActionServiceTests", function() {
 		 				 		
 		 		FreezeDiceAction.freeze(2);
 		 		expect(CheckValidDiceFreeze.validate.calls.count()).toEqual(0);
+		 		expect(PlayerNotification.setMessage.calls.count()).toEqual(1);
+		 		expect(PlayerNotification.setMessage.calls.argsFor(0)).toEqual(['You need to take a worm or reroll the dice.']);
 	 		 }
   ]));
   
