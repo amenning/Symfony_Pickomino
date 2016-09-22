@@ -50,7 +50,7 @@ describe("FreezeDiceActionServiceTests", function() {
    	}
   ]));
   
-  it('should not freeze the dice if player has already frozen a dice grouping this turn', 
+  it('should not freeze the dice if player has already frozen a dice grouping this turn and respond with message', 
 	 inject(['FreezeDiceAction',
 	         'GameAction',
 	         'CheckValidDiceFreeze',
@@ -83,7 +83,7 @@ describe("FreezeDiceActionServiceTests", function() {
 	 		 }
   ]));
   
-  it('should not freeze the dice if player a player already has that dice value frozen', 
+  it('should not freeze the dice if player a player already has that dice value frozen and respond with message', 
 	 inject(['FreezeDiceAction',
 	         'GameAction',
 	         'CheckValidDiceFreeze',
