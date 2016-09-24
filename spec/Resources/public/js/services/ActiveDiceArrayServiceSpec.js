@@ -38,7 +38,7 @@ describe("ActiveDiceArrayServiceTests", function() {
 		}
 	}]));
 	
-	it('should remove all dice of a certain value when remove(diceValue) called', inject(['ActiveDiceArray',function(ActiveDiceArray) {
+	it('should remove all dice of a certain value when remove(diceValue) is called', inject(['ActiveDiceArray',function(ActiveDiceArray) {
 		expect(ActiveDiceArray.array.length).toEqual(8);
 		
 		ActiveDiceArray.remove(6);
