@@ -53,7 +53,7 @@ describe("BunkPenaltyServiceTests", function() {
    	}
   ]));
   
-  it('should not return a worm or remove grill worm if player has not worm tiles', inject(['BunkPenalty', 'PlayerWormsArray', 'GrillWormsArray', 'GameAction', 'RandomDice', 'PlayerNotification', 'GameState', 
+  it('should not return a worm or remove grill worm if player has no worm tiles', inject(['BunkPenalty', 'PlayerWormsArray', 'GrillWormsArray', 'GameAction', 'RandomDice', 'PlayerNotification', 'GameState', 
                                                  function(BunkPenalty, PlayerWormsArray, GrillWormsArray, GameAction, RandomDice, PlayerNotification, GameState
     ) {	  
 	  BunkPenalty.penalize();
