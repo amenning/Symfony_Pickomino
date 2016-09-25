@@ -23,7 +23,7 @@ describe("PlayerNotificationServiceTests", function() {
    	}
   ]));
   
-  it('should call set the message info text when called with setMessage', inject(['PlayerNotification', function(PlayerNotification) {
+  it('should set the message info text when called with setMessage', inject(['PlayerNotification', function(PlayerNotification) {
 	  expect(PlayerNotification.message["info"]).toEqual('Goal: Try To Collect All The Worms!  Click "Roll" to Start!');
 	  
 	  PlayerNotification.setMessage("test");
