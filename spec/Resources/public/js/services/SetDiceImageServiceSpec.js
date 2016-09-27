@@ -25,13 +25,13 @@ describe("SetDiceImageServiceTests", function() {
   
   var diceValues = [1, 2, 3, 4, 5, 6];
   var diceImageName = [
-                       "DiceFaceOne", 
-                       "DiceFaceTwo", 
-                       "DiceFaceThree", 
-                       "DiceFaceFour", 
-                       "DiceFaceFive", 
-                       "OneWormTile"
-                       ];
+    "DiceFaceOne", 
+    "DiceFaceTwo", 
+    "DiceFaceThree", 
+    "DiceFaceFour", 
+    "DiceFaceFive", 
+    "OneWormTile"
+  ];
   
   // Check that each group of tile values corresponds to a certain dice image filename and path
   // Uses dataProvider function above
