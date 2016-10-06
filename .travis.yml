@@ -1,26 +1,31 @@
-language:
-- php
+language: php
+
 php:
-- 5.6
+  - 5.6
+
 addons:
   sonarqube: true
-  env:
-    global:
-      - secure: fjjhRbqFNVVpLQFTMxOoF6LUgOkKlcT8FGdA/Eqsi3jT9SHwGW/cNP1KSLn14wuwyS0fEUUShrLpZolzi77M/vp0Eia3FaBha4i9KPdtC03hO6EOpvfP5DcjC2srnml6au3WHOQYzTR+8H67s1DsVh1opwPo0CfT4E9JFJNv+BkSAUILoQISdGjm7odr35YiGB+mSqVP70AOMJr1kzJtvmxhWAttQ+kc3jDvnVoidcQi2DG4RF48iiqS+r0OT6U5AGanS3UMjIkFjxIhXvdMEiN7CqLwovWv19a9+xdzBBUHRAKCMkNRMo09UG4lVKxehmQTEZHP4UwMFSbuyr/i6dOVzFsKCcjWOC0vIkeBbZm+JhDO0kYUR20r9BW7/Afe8AgkORLEdOzTu2vlXARRQiAWR7YCgDCMy2IvBuVqgpwAxsr51uMPaOFs/D4IP5se1E074RGrL/YNyL2BJIHR9FjgzU4IA7IRpf7kGNCv46iJXCw2MUcDix9goVdF6e0KFm1FiWhXTMiIfNwOiV6i90pRutfIjFqJrptsedzY4sPZkhtYzqF9wM+F/9Y5XRKmXoZ4MCPcNbfCX42Yh+L0AVDixx7MEyCIs7gfpxhpAWx/GzBa8bDeAE8oc9BldhVuxcCQJZLL8DIfy+P7dqML1Agf1ichhSgRFgTR6ldgqKE=
 
-- SYMFONY_VERSION=2.8.*
+env:
+  global:
+    - secure: fjjhRbqFNVVpLQFTMxOoF6LUgOkKlcT8FGdA/Eqsi3jT9SHwGW/cNP1KSLn14wuwyS0fEUUShrLpZolzi77M/vp0Eia3FaBha4i9KPdtC03hO6EOpvfP5DcjC2srnml6au3WHOQYzTR+8H67s1DsVh1opwPo0CfT4E9JFJNv+BkSAUILoQISdGjm7odr35YiGB+mSqVP70AOMJr1kzJtvmxhWAttQ+kc3jDvnVoidcQi2DG4RF48iiqS+r0OT6U5AGanS3UMjIkFjxIhXvdMEiN7CqLwovWv19a9+xdzBBUHRAKCMkNRMo09UG4lVKxehmQTEZHP4UwMFSbuyr/i6dOVzFsKCcjWOC0vIkeBbZm+JhDO0kYUR20r9BW7/Afe8AgkORLEdOzTu2vlXARRQiAWR7YCgDCMy2IvBuVqgpwAxsr51uMPaOFs/D4IP5se1E074RGrL/YNyL2BJIHR9FjgzU4IA7IRpf7kGNCv46iJXCw2MUcDix9goVdF6e0KFm1FiWhXTMiIfNwOiV6i90pRutfIjFqJrptsedzY4sPZkhtYzqF9wM+F/9Y5XRKmXoZ4MCPcNbfCX42Yh+L0AVDixx7MEyCIs7gfpxhpAWx/GzBa8bDeAE8oc9BldhVuxcCQJZLL8DIfy+P7dqML1Agf1ichhSgRFgTR6ldgqKE=
+
+  - SYMFONY_VERSION=2.8.*
+
 services:
-- postgresql
+  - postgresql
+
 before_script:
-- npm install -g grunt-cli
-- npm install -g bower
-- npm install
-- bower install
-- psql -c 'create database symfony_pickomino;' -U postgres
-- cp app/config/parameters.yml.travis app/config/parameters.yml
-- composer install
-- php app/console doctrine:schema:update --force
+  - npm install -g grunt-cli
+  - npm install -g bower
+  - npm install
+  - bower install
+  - psql -c 'create database symfony_pickomino;' -U postgres
+  - cp app/config/parameters.yml.travis app/config/parameters.yml
+  - composer install
+  - php app/console doctrine:schema:update --force
+
 script:
-- phpunit --debug -c app/
-- node_modules/karma/bin/karma start karma.conf.js --single-run
-- sonar-scanner -Dsonar.login=$SONAR_TOKEN
+  - phpunit --debug -c app/
+  - node_modules/karma/bin/karma start karma.conf.js --single-run
+  - sonar-scanner -Dsonar.login=$SONAR_TOKEN
