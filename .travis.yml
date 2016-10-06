@@ -7,9 +7,6 @@ addons:
   sonarqube: true
 
 env:
-  - global:
-    - secure: fjjhRbqFNVVpLQFTMxOoF6LUgOkKlcT8FGdA/Eqsi3jT9SHwGW/cNP1KSLn14wuwyS0fEUUShrLpZolzi77M/vp0Eia3FaBha4i9KPdtC03hO6EOpvfP5DcjC2srnml6au3WHOQYzTR+8H67s1DsVh1opwPo0CfT4E9JFJNv+BkSAUILoQISdGjm7odr35YiGB+mSqVP70AOMJr1kzJtvmxhWAttQ+kc3jDvnVoidcQi2DG4RF48iiqS+r0OT6U5AGanS3UMjIkFjxIhXvdMEiN7CqLwovWv19a9+xdzBBUHRAKCMkNRMo09UG4lVKxehmQTEZHP4UwMFSbuyr/i6dOVzFsKCcjWOC0vIkeBbZm+JhDO0kYUR20r9BW7/Afe8AgkORLEdOzTu2vlXARRQiAWR7YCgDCMy2IvBuVqgpwAxsr51uMPaOFs/D4IP5se1E074RGrL/YNyL2BJIHR9FjgzU4IA7IRpf7kGNCv46iJXCw2MUcDix9goVdF6e0KFm1FiWhXTMiIfNwOiV6i90pRutfIjFqJrptsedzY4sPZkhtYzqF9wM+F/9Y5XRKmXoZ4MCPcNbfCX42Yh+L0AVDixx7MEyCIs7gfpxhpAWx/GzBa8bDeAE8oc9BldhVuxcCQJZLL8DIfy+P7dqML1Agf1ichhSgRFgTR6ldgqKE=
-
   - SYMFONY_VERSION=2.8.*
 
 services:
@@ -24,8 +21,10 @@ before_script:
   - cp app/config/parameters.yml.travis app/config/parameters.yml
   - composer install
   - php app/console doctrine:schema:update --force
-
 script:
   - phpunit --debug -c app/
   - node_modules/karma/bin/karma start karma.conf.js --single-run
   - sonar-scanner -Dsonar.login=$SONAR_TOKEN
+
+SONAR_TOKEN:
+  - secure: lHbYhND4Wg/kxnMHuXRX9A3CzL10oVPFgXFcXRN0xwXxmJBl8E+phPJClp8QPWd66F0rUmQfh09UdVhaXUEIv0HDlIfs5uCUNeYnUict6853QKZ3u3fSdNXGhTVfapdzVOT9oOcj4pydQkSfSh7ZapuyWaRQucFmvQBTNmeJJQY4XdET4P/vmzpKnxzETWk9EScEgv97Uma7UvNXMozDKz1GMMHWPfgf0p4iugXNoAoavtcWHnlJUo6jcFsaOQE4RRVFPd7z6F8eRx2ec3UJKAf0IZAMIZI1KjC1FR1Mkz4pWTzz9en+xvFF9fz2UuMOM64nppPaWt08GR0eoZPR80xgNlDVPKSkuwaBQe6dEj/kIXtWFbFmo+Kp4za+9w8+3PtG08wmsXzZE9D/8KLzFkrq25iE1AyBPK1DoBjT78bMIJghMRJSjD4Q6aHTwSNcmL+0P3TF0O4+YrP/pjttAtJiz/N8beUMTylSIMdeixsArm8SLUrJCbVbER/uLNP3DzmO6UG/wfBS5NHAuilnECp3x48VINvCenEfDq1i1ADR2hIVDe1wlIr6XkIb4C8Wy9R2GlsUjzrvxhBXN40BZXO6rY8nmEmSoEMai6WduO1yDgrf5KKjaNlI2kkrJqpsUA/AKPdzYruRj4rVlj6Wnb1uDJNvzhlXw5tD6WyGpLA=
